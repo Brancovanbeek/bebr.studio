@@ -1,0 +1,24 @@
+{
+  "name": "bebr.studio",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/svelte": "^7.2.5",
+    "@sanity/astro": "^3.2.11",
+    "@sanity/client": "^7.14.1",
+    "astro": "^5.17.1",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
+    "react-is": "^19.2.4",
+    "sanity": "^5.8.1",
+    "styled-components": "^6.3.9",
+    "svelte": "^5.50.1",
+    "typescript": "^5.9.3"
+  }
+}

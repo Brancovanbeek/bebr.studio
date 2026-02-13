@@ -18,7 +18,7 @@
     "react-is": "^19.2.4",
     "sanity": "^5.8.1",
     "styled-components": "^6.3.9",
-    "svelte": "^5.50.1",
+    "svelte": "^5.50.3",
     "typescript": "^5.9.3"
   }
 }

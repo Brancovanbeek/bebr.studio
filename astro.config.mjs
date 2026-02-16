@@ -5,7 +5,7 @@ import svelte from '@astrojs/svelte';
 import vercel from '@astrojs/vercel/serverless';
 
 export default defineConfig({
-  output: 'hybrid',
+  output: 'static',
   adapter: vercel(), 
   integrations: [
     sanity({

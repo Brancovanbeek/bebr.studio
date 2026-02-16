@@ -18,3 +18,60 @@ const { hero } = await client.fetch(`
     <a href="#" class="scroll-text">{hero?.scrollText}</a>
     <h1 class="logo display">{hero?.logoText}</h1>
 </section>
+
+<style>
+.hero-section {
+  height: 75vh;
+  background-color: var(--color-black);
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  width: 100%;
+  padding: 0 var(--space-6);
+}
+
+h1{
+  grid-column: 1/7;
+  grid-row: 6/7;
+  margin-bottom: var(--space-8);
+}
+
+.tagline-text {
+    grid-row: 2/3;
+    grid-column: 1/7;
+    font-weight: var(--font-weight-medium);
+    margin-top: var(--space-8);
+    line-height: var(--line-height-tight);
+}
+
+.scroll-text {
+    grid-row: 3/4;
+    grid-column: 1/4;
+    font-weight: var(--font-weight-medium);
+    margin-top: var(--space-6);
+    font-size: var(--font-size-heading-xs);
+}
+
+
+@media (min-width: 768px) {
+  .hero-section{
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+  }
+  .tagline-text {
+    grid-row: 2/3;
+    grid-column: 7/13;
+    max-width: 30ch;;
+  }
+  .scroll-text {
+    grid-row: 3/4;
+    grid-column: 7/10;
+  }
+}
+
+@media (min-width: 1024px) {
+  .hero-section{
+    height: 100vh;
+  }
+}
+</style>

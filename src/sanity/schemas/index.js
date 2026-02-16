@@ -23,3 +23,4 @@ export const schemaTypes = [
   // bv aboutSection,
   // bv ervicesSection,
 ]
+

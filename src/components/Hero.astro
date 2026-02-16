@@ -12,3 +12,13 @@ const { hero } = await client.fetch(`
 `
 )
 ---
+
+<section class="hero">
+  {hero && (
+    <div class="hero-inner">
+      <div class="hero-logo">{hero.logoText}</div>
+      {hero.tagline && <p class="hero-tagline">{hero.tagline}</p>}
+      {hero.scrollText && <p class="hero-scroll">{hero.scrollText}</p>}
+    </div>
+  )}
+</section>

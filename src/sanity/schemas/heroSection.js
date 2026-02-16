@@ -21,7 +21,7 @@ export default {
       name: 'scrollText',
       title: 'Scroll Tekst',
       type: 'string',
-      initialValue: 'Scroll to explore ↓'
+      initialValue: 'Scroll to explore â†“'
     }
   ],
   preview: {
@@ -32,3 +32,4 @@ export default {
     }
   }
 }
+

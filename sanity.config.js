@@ -1,7 +1,7 @@
 import {defineConfig} from 'sanity'
 import {structureTool} from 'sanity/structure'
 import {visionTool} from '@sanity/vision'
-import {schemaTypes} from './schemas'
+import {schemaTypes} from './src/sanity/schemas'
 
 export default defineConfig({
   name: 'default',
@@ -19,7 +19,7 @@ export default defineConfig({
             // Homepage als singleton (er is maar 1)
             S.listItem()
               .title('Homepage')
-              .icon(() => '🏠')
+              .icon(() => 'ðŸ ')
               .child(
                 S.document()
                   .schemaType('homePage')
@@ -34,3 +34,4 @@ export default defineConfig({
     types: schemaTypes,
   },
 })
+

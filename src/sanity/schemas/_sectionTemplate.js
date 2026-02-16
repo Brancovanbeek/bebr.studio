@@ -4,8 +4,8 @@
 // STAP 2: Pas onderstaande aan:
 
 export default {
-  name: 'teamSection',              // ← Verander naar bijv. 'aboutSection'
-  title: 'Team section',            // ← Verander naar bijv. 'About Sectie'
+  name: 'mijnSectie',              // â† Verander naar bijv. 'aboutSection'
+  title: 'Mijn Sectie',            // â† Verander naar bijv. 'About Sectie'
   type: 'object',
   fields: [
     {
@@ -31,7 +31,7 @@ export default {
   preview: {
     prepare() {
       return {
-        title: 'Team section'  // ← Verander naar bijv. 'About Sectie' (zelfde als hierboven)
+        title: 'Mijn Sectie'  // â† Verander naar bijv. 'About Sectie' (zelfde als hierboven)
       }
     }
   }
@@ -40,3 +40,4 @@ export default {
 // STAP 3: Importeer in index.js
 // STAP 4: Voeg toe aan homePage.js in de sections array
 // STAP 5: Maak Component in Astro (src/components/MijnSectie.astro)
+

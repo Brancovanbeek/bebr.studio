@@ -1,0 +1,14 @@
+---
+import { client } from '../lib/sanity'
+
+const { hero } = await client.fetch(`
+  *[_type == "homePage"][0]{
+    "hero": sections[_type == "heroSection"][0]{
+      logoText,
+      tagline,
+      scrollText
+    }
+  }
+`
+)
+---

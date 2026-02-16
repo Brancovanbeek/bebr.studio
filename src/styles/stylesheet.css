@@ -70,7 +70,7 @@ html {
      Layout
      ================== */
   --container-max-width: 1440px;
-  --container-padding: var(--space-8);
+  --container-padding: var(--space-4);
   --grid-gap: var(--space-8);
 
   /* ==================

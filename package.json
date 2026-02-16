@@ -11,8 +11,10 @@
   "dependencies": {
     "@astrojs/react": "^4.4.2",
     "@astrojs/svelte": "^7.2.5",
+    "@otterstack/sanity-img-astro": "^0.2.6",
     "@sanity/astro": "^3.2.11",
     "@sanity/client": "^7.14.1",
+    "@sanity/image-url": "^2.0.3",
     "@sanity/vision": "^5.9.0",
     "astro": "^5.17.1",
     "react": "^19.2.4",

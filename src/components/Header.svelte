@@ -93,6 +93,7 @@
   .cta {
     position: relative;
     display: none;
+        mix-blend-mode: difference;
     &::after {
       content: '';
       display: inline-block;
@@ -115,6 +116,7 @@
     display: flex;
     gap: var(--space-8);
     list-style: none;
+    mix-blend-mode: difference;
   }
   .logo {
     font-weight: var(--font-weight-bold);

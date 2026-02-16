@@ -1,0 +1,24 @@
+---
+import { client } from '../lib/sanity'
+
+const { hero } = await client.fetch(`
+  *[_type == "homePage"][0]{
+    "hero": sections[_type == "heroSection"][0]{
+      logoText,
+      tagline,
+      scrollText
+    }
+  }
+`
+)
+---
+
+<section class="hero">
+  {hero && (
+    <div class="hero-inner">
+      <div class="hero-logo">{hero.logoText}</div>
+      {hero.tagline && <p class="hero-tagline">{hero.tagline}</p>}
+      {hero.scrollText && <p class="hero-scroll">{hero.scrollText}</p>}
+    </div>
+  )}
+</section>

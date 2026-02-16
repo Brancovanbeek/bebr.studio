@@ -32,7 +32,7 @@ const { hero } = await client.fetch(`
 
 h1{
   grid-column: 1/7;
-  grid-row: 6/7;
+  grid-row: 5/6;
   margin-bottom: var(--space-8);
 }
 
@@ -50,6 +50,8 @@ h1{
     font-weight: var(--font-weight-medium);
     margin-top: var(--space-6);
     font-size: var(--font-size-heading-xs);
+    width: max-content;
+    height: max-content;
 }
 
 
@@ -61,7 +63,7 @@ h1{
   .tagline-text {
     grid-row: 2/3;
     grid-column: 7/13;
-    max-width: 30ch;;
+    max-width: 30ch;
   }
   .scroll-text {
     grid-row: 3/4;

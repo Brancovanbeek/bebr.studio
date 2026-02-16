@@ -1,0 +1,23 @@
+---
+import { client } from '../lib/sanity'
+import SanityImg from "@otterstack/sanity-img-astro";
+
+const { image } = await client.fetch(`
+  *[_type == "homePage"][0]{
+    "image": sections[_type == "imageSection"][0].image
+  }
+`)
+---
+
+<section class="image-section">
+  {image && (
+    <SanityImg 
+        src={image}
+        sizes="100vw"
+        alt="Portfolio"
+        loading="eager"
+        fetchpriority="high" 
+        class="image-section-image"
+    />
+  )}
+</section>

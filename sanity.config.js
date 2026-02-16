@@ -19,7 +19,7 @@ export default defineConfig({
             // Homepage als singleton (er is maar 1)
             S.listItem()
               .title('Homepage')
-              .icon(() => 'ðŸ ')
+              .icon(() => '🏠')
               .child(
                 S.document()
                   .schemaType('homePage')

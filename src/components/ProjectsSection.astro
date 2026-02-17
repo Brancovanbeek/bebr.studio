@@ -1,0 +1,19 @@
+---
+import { client } from '../lib/sanity'
+import ProjectCard from './ProjectCard.astro'
+
+const { projects } = await client.fetch(`
+  *[_type == "homePage"][0]{
+    "projects": sections[_type == "projectSection"][0].projects
+  }
+`)
+---
+
+<section class="project-wrapper">
+  <p class="section-label heading-xs">(Projects)</p>
+  <section class="project-section">
+    {projects?.map((project: any) => (
+      <ProjectCard project={project} />
+    ))}
+  </section>
+</section>

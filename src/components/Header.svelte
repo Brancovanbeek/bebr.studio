@@ -4,14 +4,21 @@
   onMount(() => {
     const menu = document.querySelector('.menu');
     const menuOpen = document.querySelector('.menu-open');
+    const currentPath = window.location.pathname;
+    const mobileLinks = document.querySelectorAll('.link-list a');
+
+    // voor elke selector met het attribute href -> als dat gelijk staat aan de huidge pagina voeg dan de classlist is-current toe.
+    mobileLinks.forEach((link) => {
+      if (link.getAttribute('href') === currentPath) {
+        link.classList.add('is-current');
+      }
+    });
 
     menu.addEventListener('click', () => {
       menuOpen.classList.toggle('active');
       if (menuOpen.classList.contains('active')) {
-        menuOpen.style.display = 'block';
         menu.textContent = 'Sluit';
       } else {
-        menuOpen.style.display = 'none';
         menu.textContent = 'Menu';
       }
     });
@@ -36,13 +43,13 @@
   <div class="menu-open">
     <nav>
       <ul class="link-list">
-        <li><a href="/">Home</a></li>
-        <li><a href="/work">Werk</a></li>
-        <li><a href="/about">Over ons</a></li>
-        <li><a href="/blog">Blog</a></li>
+        <li><a class="heading-l" href="/">Home</a></li>
+        <li><a class="heading-l" href="/work">Werk</a></li>
+        <li><a class="heading-l" href="/about">Over ons</a></li>
+        <li><a class="heading-l" href="/blog">Blog</a></li>
       </ul>
       <div class="contact-wrap">
-        <a href="/" class="cta-mobile">Start een project</a>
+        <a href="/" class="cta-mobile heading-m">Start een project</a>
       </div>
     </nav>
   </div>
@@ -51,7 +58,7 @@
 <style>
   .header {
     padding: var(--space-6) 0;
-    color: white;
+    color: var( --color-gray-100);
   }
   .nav-main {
     display: none;
@@ -70,30 +77,79 @@
     }
   }
   .menu-open {
-    display: none;
+    transform: translate3d(0, -100%, 0);
+    pointer-events: none;
     position: fixed;
     inset: 0;
     z-index: 9;
-    padding: var(--space-6);
+    padding: var(--space-4) 0;
     background-color: var(--color-black);
     padding-top: var(--space-24);
+    transition: 0.5s ease-out;
     & nav {
       display: flex;
       flex-direction: column;
       gap: var(--space-4);
-      mix-blend-mode: difference;
-    }
-    &.active {
-      display: block;
+      justify-content: space-between;
+      height: 100%;
+      & ul {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        & li {
+          & a {
+            padding: var(--space-6) var(--space-6);
+            width: 100%;
+            display: block;
+            border-top: 1px solid var(--color-gray-900);
+            text-decoration: none;
+            line-height: var(--line-height-normal);
+          }
+        }
+      }
     }
     @media (min-width: 768px) {
       display: none;
     }
   }
+  .menu-open:global(.active) {
+    transform: translate3d(0, 0, 0);
+    pointer-events: auto;
+  }
+  .link-list :global(a.is-current) {
+    color: var(--color-gray-500);
+  }
   .cta {
     position: relative;
     display: none;
-        mix-blend-mode: difference;
+    mix-blend-mode: difference;
+    &::after {
+      content: '';
+      display: inline-block;
+      width: 100%;
+      border-top: 1px solid var(--color-border);
+      position: absolute;
+      bottom: 0;
+      right: 0;
+    }
+    &:hover {
+      &::after {
+        content: '';
+        display: inline-block;
+        width: 0%;
+        border-top: 1px solid var(--color-border);
+        position: absolute;
+        bottom: 0;
+        right: 0;
+      }
+    }
+    @media (min-width: 768px) {
+      display: block;
+    }
+  }
+  .cta-mobile {
+    text-decoration: none;
+    position: relative;
     &::after {
       content: '';
       display: inline-block;
@@ -103,9 +159,10 @@
       bottom: 0;
       left: 0;
     }
-    @media (min-width: 768px) {
-      display: block;
-    }
+  }
+  .contact-wrap {
+    padding-left: var(--space-6);
+    padding-bottom: var(--space-16);
   }
   .nav-wrapper {
     display: flex;
@@ -117,12 +174,14 @@
     gap: var(--space-8);
     list-style: none;
     mix-blend-mode: difference;
+    color: var( --color-gray-100);
   }
   .logo {
     font-weight: var(--font-weight-bold);
     text-decoration: none;
     z-index: 10;
     mix-blend-mode: difference;
+    color: var( --color-white);
   }
 </style>
 

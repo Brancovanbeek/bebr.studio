@@ -3,6 +3,7 @@ import sanity from '@sanity/astro';
 import react from '@astrojs/react';
 import svelte from '@astrojs/svelte';
 import sanityImg from "@otterstack/sanity-img-astro/integration";
+import vercel from '@astrojs/vercel/static';
 
 export default defineConfig({
   integrations: [
@@ -16,4 +17,5 @@ export default defineConfig({
     svelte(),
     react(),
   ],
+  adapter: vercel(),
 });

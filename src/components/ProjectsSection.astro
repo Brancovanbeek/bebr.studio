@@ -17,3 +17,37 @@ const { projects } = await client.fetch(`
     ))}
   </section>
 </section>
+
+<style>
+p{
+  color: var(--color-primary);
+  font-weight: var(--font-weight-medium);
+}
+
+.project-wrapper {
+  padding: var(--space-8);
+  margin-top: var(--space-24);
+}
+
+.section-label {
+  margin-bottom: var(--space-8);
+}
+
+.project-section {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-8);
+}
+
+@media (min-width: 768px) {
+  .project-section {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .project-section {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+</style>

@@ -1,0 +1,17 @@
+---
+import SanityImg from "@otterstack/sanity-img-astro"
+const { project } = Astro.props
+---
+
+<article class="project-card">
+  <SanityImg
+    src={project.image}
+    sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
+    alt={project.heading}
+    class="project-card-image"
+  />
+  <section class="project-card-content">
+    <p class="project-card-category heading-xs">{project.category}</p>
+    <h3 class="project-card-heading heading-m">{project.heading}</h3>
+  </section>
+</article>

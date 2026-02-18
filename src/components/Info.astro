@@ -1,0 +1,16 @@
+---
+import { client } from '../lib/sanity'
+
+const { info } = await client.fetch(`
+  *[_type == "homePage"][0]{
+    "info": sections[_type == "infoSection"][0]{
+      introParagraphs,
+      valuesLabel,
+      values[]{
+        title,
+        description
+      }
+    }
+  }
+`)
+---

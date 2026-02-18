@@ -4,6 +4,7 @@ import teamSection from './teamSection'
 import imageSection from './imageSection'
 import questionsSection from './questionsSection'
 import workSection from './workSection'
+import infoSection from './infoSection'
 
 
 // Later kun je hier meer secties toevoegen:
@@ -19,7 +20,8 @@ export const schemaTypes = [
   teamSection,
   imageSection,
   questionsSection,
-  workSection
+  workSection,
+  infoSection
   // bv aboutSection,
   // bv ervicesSection,
 ]

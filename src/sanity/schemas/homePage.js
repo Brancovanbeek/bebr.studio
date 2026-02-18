@@ -22,7 +22,8 @@ export default {
         { type: 'imageSection'},
         { type: 'questionsSection'},
         { type: 'teamSection'},
-        { type: 'workSection'}
+        { type: 'workSection'},
+        { type: 'infoSection'}
         // Later kun je hier toevoegen:
         // { type: 'aboutSection' },
         // { type: 'servicesSection' },

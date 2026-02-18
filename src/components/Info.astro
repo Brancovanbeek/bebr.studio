@@ -20,14 +20,14 @@ const { info } = await client.fetch(`
     <!-- Intro Paragraphs -->
     <div class="intro-content">
       {info?.introParagraphs?.map((paragraph: string) => (
-        <p class="intro-text">{paragraph}</p>
+        <p class="intro-text body-l">{paragraph}</p>
       ))}
     </div>
 
     <!-- Values Label -->
     <div class="values-label-column">
       {info?.valuesLabel && (
-        <p class="values-label">{info.valuesLabel}</p>
+        <p class="values-label body-s">{info.valuesLabel}</p>
       )}
     </div>
 
@@ -35,8 +35,8 @@ const { info } = await client.fetch(`
     <div class="values-column">
       {info?.values?.map((value: any) => (
         <div class="value-item">
-          <h3 class="value-title">{value.title}</h3>
-          <p class="value-description">{value.description}</p>
+          <h3 class="value-title heading-l">{value.title}</h3>
+          <p class="value-description body-m">{value.description}</p>
         </div>
       ))}
     </div>
@@ -100,5 +100,26 @@ const { info } = await client.fetch(`
     grid-column: 2;
     gap: var(--space-12);
   }
+}
+
+.intro-text {
+  line-height: var(--line-height-relaxed);
+  font-size: var(--font-size-heading-s);
+  max-width: 40ch;
+}
+
+.values-label {
+  font-weight: var(--font-weight-medium);
+}
+
+.value-title {
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-body);
+}
+
+.value-description {
+  line-height: var(--line-height-relaxed);
+  opacity: 0.8;
+  max-width: 40ch;
 }
 </style>

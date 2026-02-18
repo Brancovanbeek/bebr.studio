@@ -14,3 +14,65 @@ const { info } = await client.fetch(`
   }
 `)
 ---
+
+<section class="info-section">
+  <div class="info-container">
+    <!-- Intro Paragraphs -->
+    <div class="intro-content">
+      {info?.introParagraphs?.map((paragraph: string) => (
+        <p class="intro-text">{paragraph}</p>
+      ))}
+    </div>
+
+    <!-- Values Label -->
+    <div class="values-label-column">
+      {info?.valuesLabel && (
+        <p class="values-label">{info.valuesLabel}</p>
+      )}
+    </div>
+
+    <!-- Values Grid -->
+    <div class="values-column">
+      {info?.values?.map((value: any) => (
+        <div class="value-item">
+          <h3 class="value-title">{value.title}</h3>
+          <p class="value-description">{value.description}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+.info-section {
+  background-color: var(--color-black);
+  color: var(--color-white);
+  padding: var(--space-8);
+}
+
+.info-container {
+  max-width: 1440px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-12);
+}
+
+.intro-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+}
+
+.values-column {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+}
+
+.value-item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+</style>

@@ -160,6 +160,13 @@ body {
   font-weight: var(--font-weight-medium);
 }
 
+.heading-xs {
+  color: var(--color-text);
+  font-size: var(--font-size-heading-xs);
+  line-height: var(--line-height-normal);
+  font-weight: var(--font-weight-medium);
+}
+
 .body {
   color: var(--color-text);
   font-size: var(--font-size-body);

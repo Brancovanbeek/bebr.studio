@@ -11,8 +11,8 @@ const { projects } = await client.fetch(`
 
 <section class="project-wrapper container">
   <section class="project-header">
-    <p class="section-label heading-xs">(Projecten)</p>
-    <p class="section-description heading-xs">Een selectie van onze nieuwste projecten</p>
+    <h2 class="section-label heading-xs">(Projecten)</h2>
+    <p class="section-description heading-m">Een selectie van onze <br> nieuwste projecten</p>
   </section>
 
   <section class="project-section">
@@ -26,31 +26,24 @@ const { projects } = await client.fetch(`
 .project-header {
   display: flex;
   flex-direction: column;
-  gap: var(--space-4);
-  margin-bottom: var(--space-8);
+  margin-bottom: var(--space-6);
 }
 
-p{
+.section-label{
   color: var(--color-primary);
   font-weight: var(--font-weight-medium);
 }
 
-.project-wrapper {
-  padding: var(--space-8);
-  margin-top: var(--space-24);
-}
-
 .section-description {
   color: var(--color-primary);
-  max-width: 13rem;
-  width: max-content;
   display: none;
+  margin-left: auto;
 }
 
 .project-section {
   display: grid;
   grid-template-columns: 1fr;
-  gap: var(--space-8);
+  gap: var(--grid-gap);
 }
 
 @media (min-width: 768px) {
@@ -58,11 +51,12 @@ p{
     grid-template-columns: repeat(2, 1fr);
   }
   .section-label {
-  align-self: flex-end;
+  align-self: center;
   }
   .project-header {
     flex-direction: row;
     justify-content: space-between;
+    margin-bottom: var(--space-12);
   }
   .section-description {
     display: block;

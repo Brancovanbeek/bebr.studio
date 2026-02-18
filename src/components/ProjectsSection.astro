@@ -9,10 +9,10 @@ const { projects } = await client.fetch(`
 `)
 ---
 
-<section class="project-wrapper container">
-  <section class="project-header">
-    <h2 class="section-label heading-xs">(Projecten)</h2>
-    <p class="section-description heading-m">Een selectie van onze <br> nieuwste projecten</p>
+<section class="project-section_wrapper container">
+  <section class="project-section_header">
+    <h2 class="project-section_label heading-xs">(Projecten)</h2>
+    <p class="project-section_description heading-m">Een selectie van onze <br> nieuwste projecten</p>
   </section>
 
   <section class="project-section">
@@ -23,49 +23,49 @@ const { projects } = await client.fetch(`
 </section>
 
 <style>
-.project-header {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: var(--space-6);
-}
+  .project-section_header {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: var(--space-6);
+  }
 
-.section-label{
-  color: var(--color-primary);
-  font-weight: var(--font-weight-medium);
-}
+  .project-section_label{
+    color: var(--color-primary);
+    font-weight: var(--font-weight-medium);
+  }
 
-.section-description {
-  color: var(--color-primary);
-  display: none;
-  margin-left: auto;
-}
+  .project-section_description {
+    color: var(--color-primary);
+    display: none;
+    margin-left: auto;
+  }
 
-.project-section {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--grid-gap);
-}
-
-@media (min-width: 768px) {
   .project-section {
-    grid-template-columns: repeat(2, 1fr);
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--grid-gap);
   }
-  .section-label {
-  align-self: center;
-  }
-  .project-header {
-    flex-direction: row;
-    justify-content: space-between;
-    margin-bottom: var(--space-12);
-  }
-  .section-description {
-    display: block;
-  }
-}
 
-@media (min-width: 1024px) {
-  .project-section {
-    grid-template-columns: repeat(3, 1fr);
+  @media (min-width: 768px) {
+    .project-section {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .project-section_label {
+    align-self: center;
+    }
+    .project-section_header {
+      flex-direction: row;
+      justify-content: space-between;
+      margin-bottom: var(--space-12);
+    }
+    .project-section_description {
+      display: block;
+    }
   }
-}
+
+  @media (min-width: 1024px) {
+    .project-section {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
 </style>

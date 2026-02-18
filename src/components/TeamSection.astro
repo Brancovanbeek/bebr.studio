@@ -9,3 +9,97 @@ const { teamMembers } = await client.fetch(`
   }
 `)
 ---
+
+<section class="team-section container">
+    <section class="team-section_header">
+        <h2 class="heading-xs">(Wie we zijn)</h2>
+        <p class="heading-m">Ontmoet het team achter bebr.studio dat <br class="desktop-only"> naast je staat van concept tot lancering.</p>
+    </section>
+
+    <section class="team-section_group">
+        <h3 class="heading-xs">Co-founders</h3>
+
+        <section class="team-section_grid">
+            {teamMembers?.map((member: any) => (
+                <TeamCard member={member} />
+            ))}
+        </section>
+    </section>
+</section>
+
+<style>
+    .team-section {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .team-section_header {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: var(--space-12);
+
+        h2{
+            color: var(--color-primary);
+            margin-bottom: var(--space-6);
+        }
+
+        p{
+            text-wrap: balance;
+            color: var(--color-primary);
+        }
+    }
+
+    .desktop-only {
+        display: none;
+    }
+  
+    @media (min-width: 768px) {
+        .desktop-only {
+            display: inline;
+        }
+    }
+
+    .team-section_group {
+        display: flex;
+        flex-direction: column;
+
+        h3{
+            color: var(--color-primary);
+            margin-bottom: var(--space-6);
+        }
+    }
+
+    .team-section_grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--grid-gap)
+    }
+
+  @media (min-width: 768px) {
+        .team-section_header {
+            flex-direction: row;
+            justify-content: space-between;
+
+            h2{
+                margin-bottom: unset;
+                align-self: center;
+            }
+        }
+
+        .team-section_group {
+            display: grid;
+            grid-template-columns: 1fr repeat(3, 1fr);
+            align-items: start;
+        }
+
+        .team-section_group-label {
+            grid-column: 1;
+        }
+
+        .team-section_grid {
+            grid-column: 2 / 5;
+            grid-template-columns: repeat(3, minmax(0, 250px));
+            margin-left: auto;
+        }
+  }
+</style>

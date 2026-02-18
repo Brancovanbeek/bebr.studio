@@ -1,0 +1,11 @@
+---
+// TeamSection.astro
+import { client } from '../lib/sanity'
+import TeamCard from './TeamCard.astro'
+
+const { teamMembers } = await client.fetch(`
+  *[_type == "homePage"][0]{
+    "teamMembers": sections[_type == "teamSection"][0].teamMembers
+  }
+`)
+---

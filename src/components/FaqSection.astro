@@ -1,0 +1,28 @@
+---
+import { client } from '../lib/sanity';
+
+const { faqs } = await client.fetch(`
+  *[_type == "homePage"][0]{
+    "faqs": sections[_type == "faqSection"][0].faqs
+  }
+`);
+---
+
+<section class="faq-section container">
+    <h2 class="heading-xs">(Veelgestelde vragen)</h2>
+    
+    <div class="faq-list">
+      {faqs?.map((faq: any) => (
+        <details class="faq-item">
+            <summary class="faq-question heading-m">
+                {faq.question}
+                <span class="faq-icon heading-l" aria-hidden="true">+</span>
+            </summary>
+
+            <div class="faq-answer">
+                <p class="heading-xs">{faq.answer}</p>
+            </div>
+        </details>
+      ))}
+    </div>
+</section>

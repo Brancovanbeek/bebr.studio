@@ -9,10 +9,10 @@ const { projects } = await client.fetch(`
 `)
 ---
 
-<section class="project-wrapper container">
-  <section class="project-header">
-    <p class="section-label heading-xs">(Projecten)</p>
-    <p class="section-description heading-xs">Een selectie van onze nieuwste projecten</p>
+<section class="project-section_wrapper container">
+  <section class="project-section_header">
+    <h2 class="project-section_label heading-xs">(Projecten)</h2>
+    <p class="project-section_description heading-m">Een selectie van onze <br> nieuwste projecten</p>
   </section>
 
   <section class="project-section">
@@ -23,55 +23,49 @@ const { projects } = await client.fetch(`
 </section>
 
 <style>
-.project-header {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-4);
-  margin-bottom: var(--space-8);
-}
+  .project-section_header {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: var(--space-6);
+  }
 
-p{
-  color: var(--color-primary);
-  font-weight: var(--font-weight-medium);
-}
+  .project-section_label{
+    color: var(--color-primary);
+    font-weight: var(--font-weight-medium);
+  }
 
-.project-wrapper {
-  padding: var(--space-8);
-  margin-top: var(--space-24);
-}
+  .project-section_description {
+    color: var(--color-primary);
+    display: none;
+    margin-left: auto;
+  }
 
-.section-description {
-  color: var(--color-primary);
-  max-width: 13rem;
-  width: max-content;
-  display: none;
-}
-
-.project-section {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--space-8);
-}
-
-@media (min-width: 768px) {
   .project-section {
-    grid-template-columns: repeat(2, 1fr);
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--grid-gap);
   }
-  .section-label {
-  align-self: flex-end;
-  }
-  .project-header {
-    flex-direction: row;
-    justify-content: space-between;
-  }
-  .section-description {
-    display: block;
-  }
-}
 
-@media (min-width: 1024px) {
-  .project-section {
-    grid-template-columns: repeat(3, 1fr);
+  @media (min-width: 768px) {
+    .project-section {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .project-section_label {
+    align-self: center;
+    }
+    .project-section_header {
+      flex-direction: row;
+      justify-content: space-between;
+      margin-bottom: var(--space-12);
+    }
+    .project-section_description {
+      display: block;
+    }
   }
-}
+
+  @media (min-width: 1024px) {
+    .project-section {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
 </style>

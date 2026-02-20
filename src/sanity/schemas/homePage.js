@@ -22,9 +22,12 @@ export default {
         { type: 'imageSection'},
         { type: 'projectSection'},
         { type: 'teamSection'},
+        { type: 'faqSection'},
   
   
 
+        // { type: 'teamSection'},
+        
         // Later kun je hier toevoegen:
         // { type: 'aboutSection' },
         // { type: 'servicesSection' },

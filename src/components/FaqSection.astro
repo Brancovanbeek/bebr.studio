@@ -6,26 +6,42 @@ const { faqs } = await client.fetch(`
     "faqs": sections[_type == "faqSection"][0].faqs
   }
 `);
+
+// Generate FAQ Schema for rich results
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs?.map((faq: any) => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.answer
+    }
+  }))
+};
 ---
 
-<section class="faq-section container">
+<section class="faq-section container" itemscope itemtype="https://schema.org/FAQPage">
     <h2 class="heading-xs">(Veelgestelde vragen)</h2>
     
     <div class="faq-list">
       {faqs?.map((faq: any) => (
-        <details class="faq-item">
+        <details class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
             <summary class="faq-question heading-m">
-                {faq.question}
-                <span class="faq-icon heading-l" aria-hidden="true">+</span>
+                <span itemprop="name">{faq.question}</span>
+                <span class="faq-icon heading-xl" aria-hidden="true">+</span>
             </summary>
 
-            <div class="faq-answer">
-                <p class="heading-xs">{faq.answer}</p>
+            <div class="faq-answer" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                <p class="heading-xs" itemprop="text">{faq.answer}</p>
             </div>
         </details>
       ))}
     </div>
 </section>
+
+<script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
 
 <style>
     h2{

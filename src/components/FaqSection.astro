@@ -29,7 +29,7 @@ const faqSchema = {
       {faqs?.map((faq: any) => (
         <details class="faq-item" itemscope itemprop="mainEntity" itemtype="https://schema.org/Question">
             <summary class="faq-question heading-m">
-                <span itemprop="name">{faq.question}</span>
+                <p itemprop="name">{faq.question}</p>
                 <span class="faq-icon heading-xl" aria-hidden="true">+</span>
             </summary>
 

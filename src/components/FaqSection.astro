@@ -26,3 +26,59 @@ const { faqs } = await client.fetch(`
       ))}
     </div>
 </section>
+
+<style>
+    h2{
+        color: var(--color-primary);
+        margin-bottom: var(--space-12);
+    }
+    
+    .faq-list {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .faq-item {
+        border-top: 1px solid var(--color-gray-100);
+    }
+
+    .faq-question {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        cursor: pointer;
+        list-style: none;
+        user-select: none;
+        color: var(--color-primary);
+        padding: var(--space-6) var(--space-0);
+    }
+
+    .faq-question::-webkit-details-marker {
+        display: none;
+    }
+
+    .faq-icon {
+        transition: transform 0.4s ease;
+        flex-shrink: 0;
+        margin-left: var(--space-6);
+        color: var(--color-primary);
+        font-weight: var(--font-weight-regular);
+    }
+
+    .faq-item[open] .faq-icon {
+        transform: rotate(135deg);
+    }
+
+    .faq-answer p {
+        color: var(--color-primary);
+        padding-bottom: var(--space-6);
+        font-weight: var(--font-weight-medium);
+        text-wrap: balance;
+    }
+
+    @media (min-width: 768px) {
+        .faq-answer p {
+            max-width: 60ch;
+        }
+    }
+</style>

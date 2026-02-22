@@ -2,26 +2,33 @@
   import { onMount } from "svelte";
 
   onMount(() => {
-    const menu = document.querySelector('.menu');
-    const menuOpen = document.querySelector('.menu-open');
     const currentPath = window.location.pathname;
     const mobileLinks = document.querySelectorAll('.link-list a');
+    const details = document.querySelector('details');
+    const summary = document.querySelector('.menu-summary');
 
-    // voor elke selector met het attribute href -> als dat gelijk staat aan de huidge pagina voeg dan de classlist is-current toe.
+    // Huidige pagina ophalen voor in het mobiele menu
     mobileLinks.forEach((link) => {
       if (link.getAttribute('href') === currentPath) {
         link.classList.add('is-current');
       }
     });
 
-    menu.addEventListener('click', () => {
-      menuOpen.classList.toggle('active');
-      if (menuOpen.classList.contains('active')) {
-        menu.textContent = 'Sluit';
-      } else {
-        menu.textContent = 'Menu';
-      }
+    // Menu sluiten wanneer er op een link in het mobiele menu wordt geklikt
+    mobileLinks.forEach((link) => {
+      link.addEventListener('click', () => {
+        if (details) {
+          details.open = false;
+        }
+      });
     });
+
+    // Menu tekst aanpassen op basis van de open status van het details element
+    if (details && summary) {
+      details.addEventListener('toggle', () => {
+        summary.textContent = details.open ? 'Sluit' : 'Menu';
+      });
+    }
   });
  
 </script>
@@ -36,22 +43,23 @@
         <li><a href="/blog">Blog</a></li>
       </ul>
     </nav>
-    <button class="menu">Menu</button>
+    
+    <details class="menu-details">
+      <summary class="menu-summary body">Menu</summary>
+      <nav class="menu-open">
+        <ul class="link-list">
+          <li><a class="heading-l" href="/">Home</a></li>
+          <li><a class="heading-l" href="/work">Werk</a></li>
+          <li><a class="heading-l" href="/about">Over ons</a></li>
+          <li><a class="heading-l" href="/blog">Blog</a></li>
+        </ul>
+        <div class="contact-wrap">
+          <a href="/" class="cta-mobile heading-m">Start een project</a>
+        </div>
+      </nav>
+    </details>
+    
     <a href="/" class="cta body">Start een project</a>
-  </div>
-
-  <div class="menu-open">
-    <nav>
-      <ul class="link-list">
-        <li><a class="heading-l" href="/">Home</a></li>
-        <li><a class="heading-l" href="/work">Werk</a></li>
-        <li><a class="heading-l" href="/about">Over ons</a></li>
-        <li><a class="heading-l" href="/blog">Blog</a></li>
-      </ul>
-      <div class="contact-wrap">
-        <a href="/" class="cta-mobile heading-m">Start een project</a>
-      </div>
-    </nav>
   </div>
 </header>
 
@@ -66,16 +74,29 @@
       display: block;
     }
   }
-  .menu {
+  
+  .menu-details {
     display: block;
-    font-size: 1.1rem;
-    color: white;
-    z-index: 10;
-    mix-blend-mode: difference;
     @media (min-width: 768px) {
       display: none;
     }
   }
+  
+  .menu-summary {
+    cursor: pointer;
+    font-size: 1.1rem;
+    color: white;
+    z-index: 11;
+    mix-blend-mode: difference;
+    list-style: none;
+    user-select: none;
+    position: relative;
+  }
+  
+  .menu-summary::-webkit-details-marker {
+    display: none;
+  }
+  
   .menu-open {
     transform: translate3d(0, -100%, 0);
     pointer-events: none;
@@ -86,25 +107,24 @@
     background-color: var(--color-black);
     padding-top: var(--space-24);
     transition: transform 0.5s cubic-bezier(0.8, 0, 0.2, 1) 0.4s;
-    & nav {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    justify-content: space-between;
+    height: 100%;
+    
+    & ul {
+      list-style: none;
       display: flex;
       flex-direction: column;
-      gap: var(--space-4);
-      justify-content: space-between;
-      height: 100%;
-      & ul {
-        list-style: none;
-        display: flex;
-        flex-direction: column;
-        & li {
-          & a {
-            padding: var(--space-6) var(--space-6);
-            width: 100%;
-            display: block;
-            border-top: 1px solid var(--color-gray-900);
-            text-decoration: none;
-            line-height: var(--line-height-normal);
-          }
+      & li {
+        & a {
+          padding: var(--space-6) var(--space-6);
+          width: 100%;
+          display: block;
+          border-top: 1px solid var(--color-gray-900);
+          text-decoration: none;
+          line-height: var(--line-height-normal);
         }
       }
     }
@@ -112,11 +132,14 @@
       display: none;
     }
   }
-  .menu-open:global(.active) {
+  
+  /* When details element is open */
+  .menu-details[open] .menu-open {
     transform: translate3d(0, 0, 0);
     pointer-events: auto;
     transition-delay: 0s;
   }
+  
   .link-list :global(a.is-current) {
     color: var(--color-gray-500);
   }
@@ -126,7 +149,7 @@
     transition: opacity 0.5s ease-out;
   }
 
-  .menu-open:global(.active) .link-list {
+  .menu-details[open] .link-list {
     opacity: 1;
     transition: opacity 0.5s cubic-bezier(.53,1.16,.96,.98) 0.4s;
   }
@@ -148,7 +171,7 @@
     }
   }
 
-  .menu-open:global(.active) .cta-mobile {
+  .menu-details[open] .cta-mobile {
     opacity: 1;
     transition: opacity 0.5s ease-out 0.3s;
   }

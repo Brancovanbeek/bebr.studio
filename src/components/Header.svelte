@@ -85,7 +85,7 @@
     padding: var(--space-4) 0;
     background-color: var(--color-black);
     padding-top: var(--space-24);
-    transition: 0.5s ease-out;
+    transition: transform 0.5s cubic-bezier(0.8, 0, 0.2, 1) 0.4s;
     & nav {
       display: flex;
       flex-direction: column;
@@ -115,41 +115,28 @@
   .menu-open:global(.active) {
     transform: translate3d(0, 0, 0);
     pointer-events: auto;
+    transition-delay: 0s;
   }
   .link-list :global(a.is-current) {
     color: var(--color-gray-500);
   }
-  .cta {
-    position: relative;
-    display: none;
-    mix-blend-mode: difference;
-    &::after {
-      content: '';
-      display: inline-block;
-      width: 100%;
-      border-top: 1px solid var(--color-border);
-      position: absolute;
-      bottom: 0;
-      right: 0;
-    }
-    &:hover {
-      &::after {
-        content: '';
-        display: inline-block;
-        width: 0%;
-        border-top: 1px solid var(--color-border);
-        position: absolute;
-        bottom: 0;
-        right: 0;
-      }
-    }
-    @media (min-width: 768px) {
-      display: block;
-    }
+
+  .link-list {
+    opacity: 0;
+    transition: opacity 0.5s ease-out;
   }
+
+  .menu-open:global(.active) .link-list {
+    opacity: 1;
+    transition: opacity 0.5s cubic-bezier(.53,1.16,.96,.98) 0.4s;
+  }
+ 
+
   .cta-mobile {
     text-decoration: none;
     position: relative;
+    opacity: 0;
+    transition: opacity 0.5s ease-out;
     &::after {
       content: '';
       display: inline-block;
@@ -160,10 +147,57 @@
       left: 0;
     }
   }
+
+  .menu-open:global(.active) .cta-mobile {
+    opacity: 1;
+    transition: opacity 0.5s ease-out 0.3s;
+  }
+
+  .cta {
+    display: none;
+    position: relative;
+    mix-blend-mode: difference;
+    overflow: hidden;
+    @media (min-width: 768px) {
+      display: block;
+    }
+  }
+
+  .cta::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 0.1em;
+    background-color: white;
+  }
+
+  .cta:hover::after,
+  .cta:focus::after {
+    animation: wipe 600ms ease-in-out;
+  }
+
+  @keyframes wipe {
+    0% {
+      transform: translateX(0);
+    }
+    50% {
+      transform: translateX(100%);
+    }
+    51% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
+  
   .contact-wrap {
     padding-left: var(--space-6);
     padding-bottom: var(--space-16);
   }
+  
   .nav-wrapper {
     display: flex;
     justify-content: space-between;

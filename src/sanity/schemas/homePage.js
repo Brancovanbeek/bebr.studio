@@ -20,9 +20,11 @@ export default {
       of: [
         { type: 'heroSection' },
         { type: 'imageSection'},
-        { type: 'questionsSection'},
+        { type: 'projectSection'},
         { type: 'teamSection'},
-        { type: 'workSection'}
+  
+  
+
         // Later kun je hier toevoegen:
         // { type: 'aboutSection' },
         // { type: 'servicesSection' },

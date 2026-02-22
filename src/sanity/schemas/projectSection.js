@@ -1,20 +1,20 @@
 export default {
-  name: 'teamSection',
-  title: 'Team Section',
+  name: 'projectSection',
+  title: 'Project Section',
   type: 'object',
   fields: [
     {
-      name: 'teamMembers',
-      title: 'Teamleden',
+      name: 'projects',
+      title: 'Projecten',
       type: 'array',
-      of: [{ type: 'teamCard' }],
+      of: [{ type: 'projectCard' }],
       validation: Rule => Rule.required().min(1)
     },
   ],
   preview: {
     prepare() {
       return {
-        title: 'Team Section'
+        title: 'Project Section'
       }
     }
   }

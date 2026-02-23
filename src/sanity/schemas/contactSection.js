@@ -6,13 +6,6 @@ export default {
   type: 'document',
   fields: [
     {
-      name: 'label',
-      title: 'Section Label',
-      type: 'string',
-      description: 'Kleine tekst bovenaan (bv. "contact section")',
-      initialValue: 'contact section',
-    },
-    {
       name: 'heading',
       title: 'Heading',
       type: 'string',

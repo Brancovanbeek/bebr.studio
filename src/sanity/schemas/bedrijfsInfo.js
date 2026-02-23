@@ -2,7 +2,6 @@ export default {
   name: 'bedrijfsInfo',
   title: 'Bedrijfsinfo',
   type: 'document',
-  // Singleton - slechts één document
   fields: [
     {
       name: 'naam',
@@ -27,6 +26,12 @@ export default {
       title: 'Logo',
       type: 'image',
       options: { hotspot: true }
+    },
+    {
+      name: 'prijsIndicatie',
+      title: 'Prijsindicatie',
+      type: 'string',
+      description: 'Bijv. €€ of €50 - €500 (gebruikt voor Google structured data)'
     },
     {
       name: 'diensten',
@@ -66,7 +71,3 @@ export default {
     }
   }
 }
-
-// STAP 1: Sla op als src/sanity/schemas/bedrijfsInfo.js
-// STAP 2: Importeer in index.js
-// STAP 3: Vul in via Sanity Studio

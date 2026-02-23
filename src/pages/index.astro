@@ -26,6 +26,7 @@ const bedrijf = await client.fetch(`
     stad,
     email,
     telefoon,
+    prijsIndicatie,
     "logoUrl": logo.asset->url
   }
 `);
@@ -37,14 +38,18 @@ const jsonLd = {
   "@type": "ProfessionalService",
   "name": bedrijf?.naam ?? "bebr.studio",
   "url": bedrijf?.url ?? "https://bebr.studio",
-  "logo": bedrijf?.logoUrl,
+  "image": bedrijf?.logoUrl,         
   "description": bedrijf?.beschrijving ?? seo?.description,
   "email": bedrijf?.email,
   "telephone": bedrijf?.telefoon,
+  "priceRange": bedrijf?.prijsIndicatie ?? "€€",  
   "address": {
     "@type": "PostalAddress",
     "addressLocality": bedrijf?.stad ?? "Amsterdam",
-    "addressCountry": "NL"
+    "addressCountry": {
+      "@type": "Country",
+      "name": "NL"
+    }
   },
   "serviceType": bedrijf?.diensten ?? ["Webdesign", "Branding", "Development"],
   "areaServed": "NL"

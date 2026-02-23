@@ -22,6 +22,8 @@ export default {
         { type: 'imageSection'},
         { type: 'projectSection'},
         { type: 'teamSection'},
+        { type: 'contactSection'},
+
   
   
 

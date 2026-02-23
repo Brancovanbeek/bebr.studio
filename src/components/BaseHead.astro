@@ -1,5 +1,5 @@
 ---
-const { title, description, noIndex = false, ogImage = '/og-image.jpg' } = Astro.props;
+const { title, description, noIndex = false, ogImage = '/og-image.jpg', favicon = '/favicon.ico' } = Astro.props;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 ---
 
@@ -8,6 +8,8 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 <title>{title}</title>
 <meta name="description" content={description} />
 <link rel="canonical" href={canonicalURL} />
+<link rel="icon" href={favicon} />
+<link rel="apple-touch-icon" href={favicon} />
 {noIndex && <meta name="robots" content="noindex, nofollow" />}
 
 <meta property="og:title" content={title} />

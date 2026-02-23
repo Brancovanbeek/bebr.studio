@@ -5,13 +5,13 @@ import Header from '../components/Header.svelte';
 import Footer from '../components/Footer.svelte';
 import BaseHead from '../components/BaseHead.astro';
 
-const { title, description, noIndex, ogImage } = Astro.props;
+const { title, description, noIndex, ogImage, favicon } = Astro.props;
 ---
 
 <!DOCTYPE html>
 <html lang="nl">
   <head>
-    <BaseHead title={title} description={description} noIndex={noIndex} ogImage={ogImage} />
+    <BaseHead title={title} description={description} noIndex={noIndex} ogImage={ogImage} favicon={favicon} />
   </head>
   <body>
     <Header client:load />

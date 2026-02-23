@@ -19,6 +19,12 @@ export default {
       validation: Rule => Rule.required().max(160).warning('Houd de omschrijving onder de 160 tekens.')
     },
     {
+        name: 'favicon',
+        title: 'Favicon',
+        type: 'image',
+        description: 'Aanbevolen: vierkant, minimaal 32x32px (SVG of PNG)'
+    },
+    {
       name: 'ogImage',
       title: 'Social media afbeelding',
       type: 'image',

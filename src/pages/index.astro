@@ -12,6 +12,7 @@ const page = await client.fetch(`
       title,
       description,
       noIndex,
+      "faviconUrl": favicon.asset->url,
       ogImage { asset->{ url } }
     }
   }
@@ -61,6 +62,7 @@ const jsonLd = {
   description={seo?.description ?? 'bebr.studio is een digital web studio gespecialiseerd in branding, design en webdevelopment.'}
   noIndex={seo?.noIndex}
   ogImage={seo?.ogImage?.asset?.url}
+  favicon={seo?.faviconUrl}
 >
   <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
   <Hero />

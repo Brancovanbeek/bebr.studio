@@ -1,12 +1,63 @@
 ---
-import Hero from "../components/Hero.astro"
-import Layout from "../layouts/Layout.astro"  
-import ImageSection from "../components/ImageSection.astro"
-import TeamSection from "../components/TeamSection.astro"
-import ProjectsSection from "../components/ProjectsSection.astro"
+import { client } from '../lib/sanity';
+import Hero from "../components/Hero.astro";
+import Layout from "../layouts/Layout.astro";
+import ImageSection from "../components/ImageSection.astro";
+import TeamSection from "../components/TeamSection.astro";
+import ProjectsSection from "../components/ProjectsSection.astro";
+
+const page = await client.fetch(`
+  *[_type == "homePage"][0]{
+    seo {
+      title,
+      description,
+      noIndex,
+      ogImage { asset->{ url } }
+    }
+  }
+`);
+
+const bedrijf = await client.fetch(`
+  *[_type == "bedrijfsInfo"][0]{
+    naam,
+    url,
+    beschrijving,
+    diensten,
+    stad,
+    email,
+    telefoon,
+    "logoUrl": logo.asset->url
+  }
+`);
+
+const seo = page?.seo;
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": bedrijf?.naam ?? "bebr.studio",
+  "url": bedrijf?.url ?? "https://bebr.studio",
+  "logo": bedrijf?.logoUrl,
+  "description": bedrijf?.beschrijving ?? seo?.description,
+  "email": bedrijf?.email,
+  "telephone": bedrijf?.telefoon,
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": bedrijf?.stad ?? "Amsterdam",
+    "addressCountry": "NL"
+  },
+  "serviceType": bedrijf?.diensten ?? ["Webdesign", "Branding", "Development"],
+  "areaServed": "NL"
+};
 ---
 
-<Layout>
+<Layout
+  title={seo?.title ?? 'bebr.studio — Digital Web Studio'}
+  description={seo?.description ?? 'bebr.studio is een digital web studio gespecialiseerd in branding, design en webdevelopment.'}
+  noIndex={seo?.noIndex}
+  ogImage={seo?.ogImage?.asset?.url}
+>
+  <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
   <Hero />
   <ImageSection />
   <ProjectsSection />

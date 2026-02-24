@@ -18,6 +18,28 @@ export default {
       description: 'Kleine tekst rechts bovenaan (bv. "Let\'s collaborate and discuss your upcoming project today.")',
     },
 
+    // --- Kantoor ---
+    {
+      name: 'office',
+      title: 'Kantoor',
+      type: 'object',
+      fields: [
+        {
+          name: 'label',
+          title: 'Label',
+          type: 'string',
+          initialValue: 'Kantoor',
+        },
+        {
+          name: 'address',
+          title: 'Adres',
+          type: 'text',
+          rows: 3,
+          description: 'bv. Hva, Amsterdam\n287 Lygon Street, Carlton\nIC 3053, Amsterdam',
+        },
+      ],
+    },
+
     // --- Email info ---
     {
       name: 'Email',

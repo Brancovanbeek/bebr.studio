@@ -29,6 +29,8 @@
         summary.textContent = details.open ? 'Sluit' : 'Menu';
       });
     }
+
+    
   });
  
 </script>
@@ -38,19 +40,19 @@
     <a href="/" class="logo heading-m">bebr.studio</a>
     <nav class="nav-main">
       <ul class="nav-links body">
-        <li><a href="/work">Werk</a></li>
-        <li><a href="/about">Over ons</a></li>
-        <li><a href="/blog">Blog</a></li>
+        <li><a class="heading-xs" href="#projectssection">Werk</a></li>
+        <li><a class="heading-xs" href="#teamsection">Over ons</a></li>
+        <li><a class="heading-xs" href="/blog">Blog</a></li>
       </ul>
     </nav>
     
     <details class="menu-details">
-      <summary class="menu-summary body">Menu</summary>
+      <summary class="menu-summary heading-xs">Menu</summary>
       <nav class="menu-open">
         <ul class="link-list">
           <li><a class="heading-l" href="/">Home</a></li>
-          <li><a class="heading-l" href="/work">Werk</a></li>
-          <li><a class="heading-l" href="/about">Over ons</a></li>
+          <li><a class="heading-l" href="#projectssection">Werk</a></li>
+          <li><a class="heading-l" href="#teamsection">Over ons</a></li>
           <li><a class="heading-l" href="/blog">Blog</a></li>
         </ul>
         <div class="contact-wrap">
@@ -59,7 +61,7 @@
       </nav>
     </details>
     
-    <a href="/" class="cta body">Start een project</a>
+    <a href="/" class="cta heading-xs">Start een project</a>
   </div>
 </header>
 

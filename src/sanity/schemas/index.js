@@ -5,6 +5,8 @@ import teamCard from './teamCard'
 import imageSection from './imageSection'
 import projectSection from './projectSection'
 import projectCard from './projectCard'
+import servicesSection from './servicesSection'
+import serviceCard from './serviceCard'
 
 
 // Later kun je hier meer secties toevoegen:
@@ -20,11 +22,13 @@ export const schemaTypes = [
   imageSection,
   projectSection,
   projectCard,
+  servicesSection,
+  serviceCard,
   teamSection,
   teamCard,
 
   // Later kun je hier meer secties toevoegen:
   // bv aboutSection,
-  // bv ervicesSection,
+  // bv servicesSection,
 ]
 

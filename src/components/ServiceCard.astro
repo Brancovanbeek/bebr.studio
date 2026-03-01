@@ -1,0 +1,41 @@
+---
+import SanityImg from "@otterstack/sanity-img-astro"
+const { service } = Astro.props
+---
+
+<article class="service-card">
+  
+  <section class="service-card_content">
+    <h3 class="service-card_heading heading-m">{service.heading}</h3>
+
+    <p class="service-card_text">{service.text}</p>
+    <SanityImg
+        src={service.image}
+        sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
+        alt={service.heading}
+        class="service-card_image"
+    />
+  </section>
+</article>
+
+<style>
+  .service-card_image {
+    width: 100%;
+    aspect-ratio: 4/3;
+    object-fit: cover;
+  }
+
+  .service-card_heading{
+    color: var(--color-primary);
+    line-height: var(--line-height-tight);
+  }
+
+  .service-card_heading{
+    margin-top: var(--space-4);
+  }
+
+  .service-card_text{
+    color: var(--color-text-muted);
+    margin-top: var(--space-2);
+  }
+</style>

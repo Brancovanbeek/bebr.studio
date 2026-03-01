@@ -21,6 +21,7 @@ export default {
         { type: 'heroSection' },
         { type: 'imageSection'},
         { type: 'projectSection'},
+        { type: 'servicesSection'},
         { type: 'teamSection'},
   
   

@@ -1,0 +1,39 @@
+---
+// ServicesSection.astro
+import { client } from '../lib/sanity'
+import ServiceCard from './ServiceCard.astro'
+
+const { services } = await client.fetch(`
+  *[_type == "homePage"][0]{
+    "services": sections[_type == "servicesSection"][0].services
+  }
+`)
+---
+
+<section class="services-section_wrapper container">
+  <section class="services-section_header">
+    <h2 class="services-section_label heading-xs">(Diensten)</h2>
+  </section>
+
+  <section class="services-section">
+    {services?.map((service: any) => (
+      <ServiceCard service={service} />
+    ))}
+  </section>
+
+</section>
+
+<style>
+  .services-section_header {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: var(--space-6);
+  }
+
+  .services-section_label{
+    color: var(--color-primary);
+  }
+
+
+
+</style>

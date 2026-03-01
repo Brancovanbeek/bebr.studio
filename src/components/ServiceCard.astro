@@ -23,19 +23,36 @@ const { service } = Astro.props
     width: 100%;
     aspect-ratio: 4/3;
     object-fit: cover;
+    display: none;
   }
 
-  .service-card_heading{
+  .service-card_heading {
     color: var(--color-primary);
     line-height: var(--line-height-tight);
+    font-size: clamp(2rem, 12vw, 15rem);
   }
 
-  .service-card_heading{
+  .service-card_heading {
     margin-top: var(--space-4);
   }
 
-  .service-card_text{
+  .service-card_text {
     color: var(--color-text-muted);
     margin-top: var(--space-2);
+    display: none;
+  }
+
+  @media (min-width: 768px) {
+    .service-card_image {
+      display: block;
+    }
+
+    .service-card_text {
+      display: block;
+    }
+    
+    .service-card_heading {
+      font-size: clamp(2rem, 8vw, 12rem);
+    }
   }
 </style>

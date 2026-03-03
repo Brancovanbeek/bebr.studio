@@ -3,6 +3,7 @@ import heroSection from './heroSection'
 import teamSection from './teamSection'
 import teamCard from './teamCard'
 import imageSection from './imageSection'
+import faqSection from './faqSection'
 import projectSection from './projectSection'
 import projectCard from './projectCard'
 import seo from './seo'
@@ -25,6 +26,7 @@ export const schemaTypes = [
   projectCard,
   teamSection,
   teamCard,
+  faqSection,
 
   // Later kun je hier meer secties toevoegen:
   // bv aboutSection,

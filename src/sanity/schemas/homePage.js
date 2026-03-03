@@ -33,6 +33,16 @@ export default {
         { type: 'projectSection'},
         { type: 'teamSection'},
         // Voeg hier meer secties toe:
+        { type: 'faqSection'},
+  
+  
+
+        // { type: 'teamSection'},
+        
+        // Later kun je hier toevoegen:
+        // { type: 'aboutSection' },
+        // { type: 'servicesSection' },
+        // { type: 'contactSection' }
       ]
     }
   ],

@@ -4,8 +4,8 @@
 // STAP 2: Pas onderstaande aan:
 
 export default {
-  name: 'mijnSectie',              // â† Verander naar bijv. 'aboutSection'
-  title: 'Mijn Sectie',            // â† Verander naar bijv. 'About Sectie'
+  name: '',              // â† Verander naar bijv. 'aboutSection'
+  title: '',            // â† Verander naar bijv. 'About Sectie'
   type: 'object',
   fields: [
     {
@@ -31,7 +31,7 @@ export default {
   preview: {
     prepare() {
       return {
-        title: 'Mijn Sectie'  // â† Verander naar bijv. 'About Sectie' (zelfde als hierboven)
+        title: ''  // â† Verander naar bijv. 'About Sectie' (zelfde als hierboven)
       }
     }
   }

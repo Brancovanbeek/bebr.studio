@@ -1,40 +1,3 @@
-<script>
-  import { onMount } from "svelte";
-
-  onMount(() => {
-    const currentPath = window.location.pathname;
-    const mobileLinks = document.querySelectorAll('.link-list a');
-    const details = document.querySelector('details');
-    const summary = document.querySelector('.menu-summary');
-
-    // Huidige pagina ophalen voor in het mobiele menu
-    mobileLinks.forEach((link) => {
-      if (link.getAttribute('href') === currentPath) {
-        link.classList.add('is-current');
-      }
-    });
-
-    // Menu sluiten wanneer er op een link in het mobiele menu wordt geklikt
-    mobileLinks.forEach((link) => {
-      link.addEventListener('click', () => {
-        if (details) {
-          details.open = false;
-        }
-      });
-    });
-
-    // Menu tekst aanpassen op basis van de open status van het details element
-    if (details && summary) {
-      details.addEventListener('toggle', () => {
-        summary.textContent = details.open ? 'Sluit' : 'Menu';
-      });
-    }
-
-    
-  });
- 
-</script>
-
 <header class="header">
   <div class="container nav-wrapper">
     <a href="/" class="logo heading-m">bebr.studio</a>
@@ -65,10 +28,74 @@
   </div>
 </header>
 
+<script>
+  const currentPath = window.location.pathname;
+  const mobileLinks = document.querySelectorAll<HTMLAnchorElement>('.link-list a');
+  const details = document.querySelector<HTMLDetailsElement>('details');
+  const summary = document.querySelector<HTMLElement>('.menu-summary');
+  const header = document.querySelector<HTMLElement>('.header');
+
+  // Huidige pagina ophalen voor in het mobiele menu
+  mobileLinks.forEach((link) => {
+    if (link.getAttribute('href') === currentPath) {
+      link.classList.add('is-current');
+    }
+  });
+
+  // Menu sluiten wanneer er op een link in het mobiele menu wordt geklikt
+  mobileLinks.forEach((link) => {
+    link.addEventListener('click', () => {
+      if (details) {
+        details.open = false;
+      }
+    });
+  });
+
+  // Menu tekst aanpassen op basis van de open status van het details element
+  if (details && summary) {
+    details.addEventListener('toggle', () => {
+      summary.textContent = details.open ? 'Sluit' : 'Menu';
+    });
+  }
+
+  // Header verbergen bij scrollen naar beneden, tonen bij scrollen naar boven
+  if (header) {
+    let lastScrollY = window.scrollY;
+    const scrollThreshold = 80;
+
+    const showHeader = () => { header.style.top = '0px'; };
+    const hideHeader = () => { header.style.top = `-${header.offsetHeight + 1}px`; };
+
+    window.addEventListener('scroll', () => {
+      // Niet aanpassen als het mobiele menu open is
+      if (details && details.open) return;
+
+      const currentScrollY = window.scrollY;
+      const diff = currentScrollY - lastScrollY;
+
+      if (currentScrollY < scrollThreshold) {
+        showHeader();
+      } else if (diff > 0) {
+        hideHeader();
+      } else if (diff < -10) {
+        showHeader();
+      }
+
+      lastScrollY = currentScrollY;
+    }, { passive: true });
+  }
+</script>
+
 <style>
   .header {
     padding: var(--space-6) 0;
-    color: var( --color-gray-100);
+    color: var(--color-gray-100);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    transition: top 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   }
   .nav-main {
     display: none;
@@ -155,7 +182,6 @@
     opacity: 1;
     transition: opacity 0.5s cubic-bezier(.53,1.16,.96,.98) 0.4s;
   }
- 
 
   .cta-mobile {
     text-decoration: none;
@@ -233,14 +259,14 @@
     gap: var(--space-8);
     list-style: none;
     mix-blend-mode: difference;
-    color: var( --color-gray-100);
+    color: var(--color-gray-100);
   }
   .logo {
     font-weight: var(--font-weight-bold);
     text-decoration: none;
     z-index: 10;
     mix-blend-mode: difference;
-    color: var( --color-white);
+    color: var(--color-white);
   }
+  
 </style>
-

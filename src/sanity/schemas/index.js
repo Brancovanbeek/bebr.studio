@@ -6,6 +6,8 @@ import imageSection from './imageSection'
 import faqSection from './faqSection'
 import projectSection from './projectSection'
 import projectCard from './projectCard'
+import seo from './seo'
+import bedrijfsInfo from './bedrijfsInfo'
 
 
 // Later kun je hier meer secties toevoegen:
@@ -15,7 +17,8 @@ import projectCard from './projectCard'
 export const schemaTypes = [
   // Document types
   homePage,
-  
+  seo,
+  bedrijfsInfo,
   // Section types
   heroSection,
   imageSection,
@@ -29,4 +32,3 @@ export const schemaTypes = [
   // bv aboutSection,
   // bv ervicesSection,
 ]
-

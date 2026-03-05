@@ -49,22 +49,22 @@ const status = url.searchParams.get('success')
     <form id="contact-form" class="contact-form" action="/api/contact" method="POST">
       <div class="form-row">
         <div class="form-group">
-          <label class="heading-xs">First name*</label>
+          <label class="heading-xs" for="firstName">First name*</label>
           <input class="heading-xs" type="text" name="firstName" placeholder="First name" required />
         </div>
         <div class="form-group">
-          <label class="heading-xs">Last name*</label>
+          <label class="heading-xs" for="firstName">Last name*</label>
           <input class="heading-xs" type="text" name="lastName" placeholder="Last name" required />
         </div>
       </div>
 
       <div class="form-group">
-        <label class="heading-xs">Email address*</label>
+        <label class="heading-xs" for="email">Email address*</label>
         <input class="heading-xs" type="email" name="email" placeholder="Email address" required />
       </div>
 
       <div class="form-group">
-        <label class="heading-xs">Vertel ons wat je in gedachten hebt</label>
+        <label class="heading-xs" for="message">Vertel ons wat je in gedachten hebt</label>
         <textarea class="heading-xs" name="message" placeholder="Vertel ons wat je in gedachten hebt"></textarea>
       </div>
 
@@ -72,11 +72,6 @@ const status = url.searchParams.get('success')
 
       <p id="form-message" class="muted"></p>
     </form>
-
-    <p id="form-message" class="muted">
-      {status === 'true' && 'Bericht verstuurd!'}
-      {status === 'false' && 'Er ging iets mis.'}
-    </p>
 
   </div>
 </section>

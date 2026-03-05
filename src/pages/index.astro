@@ -1,16 +1,96 @@
 ---
+import { client } from '../lib/sanity';
+import Hero from "../components/Hero.astro";
+import Layout from "../layouts/Layout.astro";
+import ImageSection from "../components/ImageSection.astro";
+import TeamSection from "../components/TeamSection.astro";
+import ProjectsSection from "../components/ProjectsSection.astro";
+
+const page = await client.fetch(`
+  *[_type == "homePage"][0]{
+    seo {
+      title,
+      description,
+      noIndex,
+      "faviconUrl": favicon.asset->url,
+      ogImage { asset->{ url } }
+    },
+    bedrijfsInfo {
+      naam,
+      url,
+      beschrijving,
+      diensten,
+      stad,
+      email,
+      telefoon,
+      prijsIndicatie,
+      "logoUrl": logo.asset->url
+    }
+  }
+`);
+
+const seo = page?.seo;
+const bedrijf = page?.bedrijfsInfo; 
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": bedrijf?.naam ?? "bebr.studio",
+  "url": bedrijf?.url ?? "https://bebr.studio",
+  "image": bedrijf?.logoUrl,
+  "logo": bedrijf?.logoUrl,
+  "description": bedrijf?.beschrijving ?? seo?.description,
+  "email": bedrijf?.email,
+  "telephone": bedrijf?.telefoon,
+  "priceRange": bedrijf?.prijsIndicatie ?? "€€",
+  "foundingLocation": "Amsterdam",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": bedrijf?.stad ?? "Amsterdam",
+    "addressCountry": "NL"
+  },
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Diensten",
+    "itemListElement": (bedrijf?.diensten ?? ["Webdesign", "Branding", "Development"]).map((naam: string) => ({
+      "@type": "Offer",
+      "itemOffered": {
+        "@type": "Service",
+        "name": naam
+      }
+    }))
+  },
+  "areaServed": {
+    "@type": "Country",
+    "name": "NL"
+  },
+  "knowsLanguage": ["nl", "en"],
+  "sameAs": [
+    "https://www.instagram.com/bebr.studio",
+    "https://www.linkedin.com/bebrstudio"
+  ]
+};
 import Hero from "../components/Hero.astro"
 import Layout from "../layouts/Layout.astro"  
 import Info from "../components/Info.astro"
 import ImageSection from "../components/ImageSection.astro"
 import TeamSection from "../components/TeamSection.astro"
 import ProjectsSection from "../components/ProjectsSection.astro"
+import FaqSection from "../components/FaqSection.astro"
 ---
 
-<Layout>
+<Layout
+  title={seo?.title ?? 'bebr.studio — Digital Web Studio'}
+  description={seo?.description ?? 'bebr.studio is een digital web studio gespecialiseerd in branding, design en webdevelopment.'}
+  noIndex={seo?.noIndex}
+  ogImage={seo?.ogImage?.asset?.url}
+  favicon={seo?.faviconUrl}
+>
+  <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
   <Hero />
   <ImageSection />
   <Info />
   <ProjectsSection />
   <TeamSection />
+  <FaqSection />
 </Layout>

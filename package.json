@@ -18,6 +18,7 @@
     "@sanity/image-url": "^2.0.3",
     "@sanity/vision": "^5.9.0",
     "astro": "^5.17.1",
+    "gsap": "^3.14.2",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
     "react-is": "^19.2.4",

@@ -1,0 +1,28 @@
+---
+// FooterSection.astro
+import { client } from '../lib/sanity'
+
+const footer = await client.fetch(`*[_type == "footerSection"][0]{
+  ctaHeading,
+  ctaButtonText,
+  ctaButtonUrl,
+  sitemap {
+    label,
+    links[] { title, url }
+  },
+  social {
+    label,
+    links[] { platform, url }
+  },
+  studioName,
+  copyrightText,
+  backToTopText
+}`)
+
+console.log('FOOTER DATA:', JSON.stringify(footer, null, 2))
+
+// Fallback zodat de pagina niet crasht als het document nog niet bestaat in Sanity
+if (!footer) {
+  console.warn('[FooterSection] Geen footer document gevonden in Sanity.')
+}
+---

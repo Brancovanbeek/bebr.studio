@@ -26,7 +26,12 @@ function buildMailOptions(firstName, lastName, email, message) {
 }
 
 export async function POST({ request }) {
-  const { firstName, lastName, email, message } = await request.json()
+  const contentType = request.headers.get('content-type') || ''
+  
+  const isJSON = contentType.includes('application/json')
+  const { firstName, lastName, email, message } = isJSON
+    ? await request.json()
+    : Object.fromEntries(await request.formData())
 
   const transporter = nodemailer.createTransport(MAIL_CONFIG)
 
@@ -35,9 +40,13 @@ export async function POST({ request }) {
       buildMailOptions(firstName, lastName, email, message)
     )
     console.log("Message sent:", result.response)
+
+    if (!isJSON) return Response.redirect('/?success=true', 303)
     return new Response(JSON.stringify({ success: true }), { status: 200 })
   } catch (err) {
     console.error("MAIL ERROR:", err)
+
+    if (!isJSON) return Response.redirect('/?success=false', 303)
     return new Response(JSON.stringify({ success: false }), { status: 500 })
   }
 }

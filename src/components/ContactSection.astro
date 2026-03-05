@@ -11,6 +11,9 @@ const { heading, tagline, Email, social, office, formSettings } = await client.f
     formSettings
   }
 `)
+
+const url = new URL(Astro.request.url)
+const status = url.searchParams.get('success')
 ---
 
 <section class="contact-section">
@@ -43,7 +46,7 @@ const { heading, tagline, Email, social, office, formSettings } = await client.f
       </div>
     </div>
 
-    <form id="contact-form" class="contact-form">
+    <form id="contact-form" class="contact-form" action="/api/contact" method="POST">
       <div class="form-row">
         <div class="form-group">
           <label class="heading-xs">First name*</label>
@@ -69,6 +72,11 @@ const { heading, tagline, Email, social, office, formSettings } = await client.f
 
       <p id="form-message" class="muted"></p>
     </form>
+
+    <p id="form-message" class="muted">
+      {status === 'true' && 'Bericht verstuurd!'}
+      {status === 'false' && 'Er ging iets mis.'}
+    </p>
 
   </div>
 </section>

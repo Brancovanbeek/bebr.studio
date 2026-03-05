@@ -168,4 +168,26 @@ const footer = await client.fetch(`*[_type == "footerSection"][0]{
   .footer-back-to-top:hover {
     color: var(--color-gray-100);
   }
+
+  @media (min-width: 768px) {
+
+    .footer-cta {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+
+    .footer-cta-heading {
+      max-width: 480px;
+    }
+
+    .footer-cta-button {
+      align-self: center;
+      white-space: nowrap;
+    }
+
+    .footer-links {
+      gap: 6rem;
+    }
+  }
 </style>

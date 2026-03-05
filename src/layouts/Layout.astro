@@ -1,7 +1,7 @@
 ---
 import '../styles/typography.css';
 import '../styles/stylesheet.css';
-import Header from '../components/Header.svelte';
+import Header from '../components/Header.astro';
 import BaseHead from '../components/BaseHead.astro';
 import FooterSection from '../components/FooterSection.astro';
 
@@ -15,7 +15,7 @@ const { title, description, noIndex, ogImage, favicon } = Astro.props;
     <BaseHead title={title} description={description} noIndex={noIndex} ogImage={ogImage} favicon={favicon} />
   </head>
   <body>
-    <Header client:load />
+    <Header />
     <main>
       <slot />
     </main>

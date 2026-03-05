@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /studio/
+
+Sitemap: https://bebr.studio/sitemap-index.xml

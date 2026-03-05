@@ -32,6 +32,7 @@ export const schemaTypes = [
   teamCard,
   questionsSection,
   faqSection,
+  workSection,
 
   // Later kun je hier meer secties toevoegen:
   // bv aboutSection,

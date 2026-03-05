@@ -71,7 +71,7 @@ html {
      Layout
      ================== */
   --container-max-width: 1440px;
-  --container-padding: var(--space-8);
+  --container-padding: var(--space-4);
   --grid-gap: var(--space-8);
 
   /* ==================
@@ -188,7 +188,6 @@ body {
   margin: 0 auto;
   padding-left: var(--container-padding);
   padding-right: var(--container-padding);
-  padding-top: var(--space-32) ;
 }
 /* ============================================
    Image Handling
@@ -244,4 +243,12 @@ button:hover {
 
 .no-scroll {
   overflow: hidden;
+}
+
+h2::before{
+  content: '(';
+}
+
+h2::after{
+  content: ')';
 }

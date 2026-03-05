@@ -2,23 +2,24 @@
 import '../styles/typography.css';
 import '../styles/stylesheet.css';
 
-import Header from '../components/Header.svelte';
+import Header from '../components/Header.astro';
 import Footer from '../components/Footer.svelte';
+import BaseHead from '../components/BaseHead.astro';
+
+const { title, description, noIndex, ogImage, favicon } = Astro.props;
 ---
 
 <!DOCTYPE html>
 <html lang="nl">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>bebr.studio.</title>
+    <BaseHead title={title} description={description} noIndex={noIndex} ogImage={ogImage} favicon={favicon} />
   </head>
   <body>
-    <!-- <Header />  -->
+    <Header />
     <main>
-      <slot /> 
+      <slot />
     </main>
-    <Footer /> 
+    <Footer />
   </body>
 </html>
 
@@ -26,10 +27,10 @@ import Footer from '../components/Footer.svelte';
 body {
   display: flex;
   flex-direction: column;
-  min-height: 100vh; /* De hele hoogte van het scherm */
+  min-height: 100vh;
 }
-
 main {
-  flex: 1; /* Neemt alle beschikbare ruimte in tussen header en footer */
+  flex: 1;
 }
 </style>
+

@@ -74,12 +74,12 @@ const { services } = await client.fetch(`
     titles.forEach((t, i) => {
       if (i !== index) {
         gsap.killTweensOf(t)
-        gsap.set(t, { color: '#e0e0e0' })
+        gsap.set(t, { color: 'var(--color-gray-100)' })
       }
     })
 
     // Animate new active title
-    gsap.to(titles[index], { color: 'var(--color-primary, #000)', duration: 0.3, ease: 'power2.out' })
+    gsap.to(titles[index], { color: 'var(--color-primary)', duration: 0.3, ease: 'power2.out' })
 
     // Show and animate new panel
     const nextPanel = panels[index]
@@ -119,7 +119,7 @@ const { services } = await client.fetch(`
 
   .services-layout {
     display: flex;
-    gap: var(--space-8, 4rem);
+    gap: var(--space-8);
     align-items: flex-start;
   }
 
@@ -134,13 +134,13 @@ const { services } = await client.fetch(`
     font-size: clamp(2.5rem, 7vw, 8rem);
     line-height: 1.05;
     font-weight: 700;
-    color: #e0e0e0;
+    color: var(--color-gray-100);
     cursor: default;
-    padding: var(--space-3, 0.75rem) 0;
+    padding: var(--space-3) 0;
   }
 
   .service-title.is-active {
-    color: var(--color-primary, #000);
+    color: var(--color-primary);
   }
 
   /* ── Right column ── */
@@ -154,7 +154,7 @@ const { services } = await client.fetch(`
   .service-panel {
     display: none;
     flex-direction: column;
-    gap: var(--space-4, 1rem);
+    gap: var(--space-4);
     opacity: 0;
   }
 
@@ -170,7 +170,7 @@ const { services } = await client.fetch(`
   }
 
   .service-panel_text {
-    color: var(--color-text-muted, #555);
+    color: var(--color-text-muted);
     font-size: 1rem;
     font-weight: 600;
     line-height: 1.5;
@@ -188,7 +188,7 @@ const { services } = await client.fetch(`
 
     .service-title {
       font-size: clamp(2rem, 10vw, 4rem);
-      color: var(--color-primary, #000) !important;
+      color: var(--color-primary) !important;
     }
   }
 </style>

@@ -73,6 +73,52 @@ const { heading, tagline, Email, social, office, formSettings } = await client.f
   </div>
 </section>
 
+<script is:inline>
+  const API_ENDPOINT = '/api/contact'
+
+  function getFormData(form) {
+    return {
+      firstName: form.firstName.value,
+      lastName: form.lastName.value,
+      email: form.email.value,
+      message: form.message.value,
+    }
+  }
+
+  async function submitForm(data) {
+    const res = await fetch(API_ENDPOINT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data),
+    })
+    return res.json()
+  }
+
+  function showMessage(element, text) {
+    element.textContent = text
+  }
+
+  const form = document.getElementById('contact-form')
+  const messageEl = document.getElementById('form-message')
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault()
+
+    try {
+      const result = await submitForm(getFormData(form))
+
+      if (result.success) {
+        showMessage(messageEl, 'Bericht verstuurd!')
+        form.reset()
+      } else {
+        showMessage(messageEl, 'Er ging iets mis, probeer opnieuw.')
+      }
+    } catch (err) {
+      showMessage(messageEl, 'Server fout.')
+    }
+  })
+</script>
+
 <style>
   .contact-section {
     padding: var(--space-8);

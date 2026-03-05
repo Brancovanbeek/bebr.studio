@@ -8,6 +8,7 @@ import projectSection from './projectSection'
 import projectCard from './projectCard'
 import seo from './seo'
 import bedrijfsInfo from './bedrijfsInfo'
+import footerSection from './footerSection'
 
 
 // Later kun je hier meer secties toevoegen:
@@ -27,6 +28,7 @@ export const schemaTypes = [
   teamSection,
   teamCard,
   faqSection,
+  footerSection,
 
   // Later kun je hier meer secties toevoegen:
   // bv aboutSection,

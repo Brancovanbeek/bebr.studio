@@ -6,6 +6,8 @@ import imageSection from './imageSection'
 import faqSection from './faqSection'
 import projectSection from './projectSection'
 import projectCard from './projectCard'
+import processSection from './processSection'  // STAP 3: Importeer hier je nieuwe sectie
+import processCard from './processCard'  // STAP 3: Importeer hier je nieuwe sectie
 import seo from './seo'
 import bedrijfsInfo from './bedrijfsInfo'
 
@@ -27,6 +29,8 @@ export const schemaTypes = [
   teamSection,
   teamCard,
   faqSection,
+  processSection,
+  processCard,
 
   // Later kun je hier meer secties toevoegen:
   // bv aboutSection,

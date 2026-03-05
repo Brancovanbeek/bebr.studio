@@ -31,6 +31,7 @@ export default {
         { type: 'heroSection' },
         { type: 'imageSection'},
         { type: 'projectSection'},
+        { type: 'processSection'},
         { type: 'teamSection'},
         // Voeg hier meer secties toe:
         { type: 'faqSection'},

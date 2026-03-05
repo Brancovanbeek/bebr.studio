@@ -1,0 +1,39 @@
+---
+import { client } from '../lib/sanity'
+import ProcessCard from './ProcessCard.astro'
+
+const { processes } = await client.fetch(`
+  *[_type == "homePage"][0]{
+    "processes": sections[_type == "processSection"][0].processes
+  }
+`)
+---
+
+<section class="process-section_wrapper container">
+  <section class="process-section_header">
+    <h2 class="process-section_label heading-xs">Process</h2>
+    <p class="process-section_description heading-m"> We approach every project with curiosity and structure </p>
+  </section>
+  
+  <section class="process-section_list">
+    {processes?.map((process: any, index: number) => (
+      <ProcessCard project={process} index={index + 1} />
+    ))}
+  </section>
+</section>
+
+<style>
+    .process-section_header {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: var(--space-6);
+    }
+    .process-section_label{
+        color: var(--color-primary);
+        font-weight: var(--font-weight-medium);
+    }
+    .process-section_description {
+        margin-left: auto;
+        color: var(--color-primary);
+    }
+</style>

@@ -1,0 +1,54 @@
+---
+const { project, index } = Astro.props
+const number = String(index).padStart(2, '0')
+---
+
+<article class="process-card">
+  <span class="process-card_number heading-xs">{number}</span>
+  <h3 class="process-card_heading heading-l">{project.heading}</h3>
+  <p class="process-card_text">{project.text}</p>
+</article>
+
+<style>
+  .process-card {
+    border-top: 1px solid var(--color-border);
+    padding-top: var(--space-8);
+    padding-bottom: var(--space-12);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-8);
+  }
+
+  .process-card_number {
+    color: var(--color-primary);
+    font-weight: var(--font-weight-medium);
+  }
+
+  .process-card_heading {
+    color: var(--color-primary);
+    font-weight: var(--font-weight-bold);
+    line-height: var(--line-height-tight);
+  }
+
+  .process-card_text {
+    color: var(--color-text-muted);
+    font-size: var(--font-size-heading-xs);
+    line-height: var(--line-height-normal);
+    max-width: 36ch;
+  }
+
+  @media (min-width: 1024px) {
+    .process-card {
+      display: grid;
+      grid-template-columns: 1fr 5fr 2fr;
+      align-items: start;
+      gap: 0;
+      padding-top: var(--space-6);
+      padding-bottom: var(--space-8);
+    }
+
+    .process-card_text {
+      max-width: 40ch;
+    }
+  }
+</style>    

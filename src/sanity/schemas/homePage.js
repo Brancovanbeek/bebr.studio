@@ -13,6 +13,16 @@ export default {
       validation: Rule => Rule.required()
     },
     {
+      name: 'seo',
+      title: 'SEO',
+      type: 'seo'
+    },
+    {
+      name: 'bedrijfsInfo',
+      title: 'Bedrijfsinfo',
+      type: 'bedrijfsInfo',
+    },
+    {
       name: 'sections',
       title: 'Pagina Secties',
       type: 'array',
@@ -24,9 +34,13 @@ export default {
         { type: 'teamSection'},
         { type: 'contactSection'},
 
+        // Voeg hier meer secties toe:
+        { type: 'faqSection'},
   
   
 
+        // { type: 'teamSection'},
+        
         // Later kun je hier toevoegen:
         // { type: 'aboutSection' },
         // { type: 'servicesSection' },
@@ -42,4 +56,3 @@ export default {
     }
   }
 }
-

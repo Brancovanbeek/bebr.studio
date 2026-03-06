@@ -153,8 +153,13 @@ const currentYear = new Date().getFullYear();
 
   .footer-logo {
     display: block;
-    font-size: min(16vw, 15rem);
+    font-size: min(17vw, 15rem);
     white-space: nowrap;
+  }
+
+  .footer-logo::before,
+  .footer-logo::after {
+    content: none;
   }
 
   /* Bottom bar */

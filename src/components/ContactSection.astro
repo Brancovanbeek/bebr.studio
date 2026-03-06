@@ -16,7 +16,7 @@ const url = new URL(Astro.request.url)
 const status = url.searchParams.get('success')
 ---
 
-<section class="contact-section">
+<section class="contact-section container">
   <div class="contact-header">
     <h2 class="heading-xl">{heading}</h2>
     <p class="heading-m">{tagline}</p>
@@ -27,7 +27,13 @@ const status = url.searchParams.get('success')
     <div class="contact-info">
       <div class="info-block">
         <h3 class="heading-xs">{office.label}</h3>
-        <p class="heading-xs">{office.address}</p>
+        <a href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(office.address)}`}
+          class="link heading-xs"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          {office.address}
+        </a>
       </div>
 
       <div class="info-block">
@@ -175,6 +181,7 @@ const status = url.searchParams.get('success')
 
   .link {
     color: var(--color-gray-500);
+    white-space: pre-line;
   }
 
   .info-block h3 {

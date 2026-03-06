@@ -18,6 +18,8 @@ const footer = await client.fetch(`*[_type == "footerSection"][0]{
   copyrightText,
   backToTopText
 }`)
+
+const currentYear = new Date().getFullYear();
 ---
 
 <footer class="footer-outer">
@@ -65,7 +67,7 @@ const footer = await client.fetch(`*[_type == "footerSection"][0]{
 
     <!-- Bottom bar -->
     <div class="footer-bottom">
-      <span class="heading-xs">{footer.copyrightText}</span>
+      <span class="heading-xs">{footer.copyrightText} {currentYear}</span>
       <a href="#top" class="footer-back-to-top heading-xs">{footer.backToTopText}</a>
     </div>
 

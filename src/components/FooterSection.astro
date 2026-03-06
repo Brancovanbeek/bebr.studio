@@ -20,63 +20,72 @@ const footer = await client.fetch(`*[_type == "footerSection"][0]{
 }`)
 ---
 
-<footer class="footer">
+<footer class="footer-outer">
+  <div class="footer">
 
-  <!-- CTA sectie -->
-  <div class="footer-cta">
-    <h2 class="footer-cta-heading heading-m">{footer.ctaHeading}</h2>
-    <a href={footer.ctaButtonUrl} class="footer-cta-button heading-m">
-      {footer.ctaButtonText}
-    </a>
+    <!-- CTA sectie -->
+    <div class="footer-cta">
+      <h2 class="footer-cta-heading heading-m">{footer.ctaHeading}</h2>
+      <a href={footer.ctaButtonUrl} class="footer-cta-button heading-m">
+        {footer.ctaButtonText}
+      </a>
+    </div>
+
+    <div class="footer-divider" />
+
+    <!-- Sitemap + Social -->
+    <div class="footer-links">
+      <nav class="footer-sitemap">
+        <p class="footer-links-heading heading-xs">{footer.sitemap?.label ?? 'Sitemap'}</p>
+        <ul>
+          {footer.sitemap?.links?.map((link: { title: string; url: string }) => (
+            <li><a class="heading-xs" href={link.url}>{link.title}</a></li>
+          ))}
+        </ul>
+      </nav>
+
+      <nav class="footer-social">
+        <p class="footer-links-heading heading-xs">{footer.social?.label ?? 'Social'}</p>
+        <ul>
+          {footer.social?.links?.map((link: { platform: string; url: string }) => (
+            <li>
+              <a class="heading-xs" href={link.url} target="_blank" rel="noopener noreferrer">
+                {link.platform}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+    </div>
+
+    <!-- Branding -->
+    <div class="footer-brand">
+      <h2 class="footer-logo display">{footer.studioName ?? 'bebr.studio'}</h2>
+    </div>
+
+    <!-- Bottom bar -->
+    <div class="footer-bottom">
+      <span class="heading-xs">{footer.copyrightText}</span>
+      <a href="#top" class="footer-back-to-top heading-xs">{footer.backToTopText}</a>
+    </div>
+
   </div>
-
-  <hr class="footer-divider" />
-
-  <!-- Sitemap + Social -->
-  <div class="footer-links">
-    <nav class="footer-sitemap">
-      <p class="footer-links-heading heading-xs">{footer.sitemap?.label ?? 'Sitemap'}</p>
-      <ul>
-        {footer.sitemap?.links?.map((link: { title: string; url: string }) => (
-          <li><a class="heading-xs" href={link.url}>{link.title}</a></li>
-        ))}
-      </ul>
-    </nav>
-
-    <nav class="footer-social">
-      <p class="footer-links-heading heading-xs">{footer.social?.label ?? 'Social'}</p>
-      <ul>
-        {footer.social?.links?.map((link: { platform: string; url: string }) => (
-          <li>
-            <a class="heading-xs" href={link.url} target="_blank" rel="noopener noreferrer">
-              {link.platform}
-            </a>
-          </li>
-        ))}
-      </ul>
-    </nav>
-  </div>
-
-  <!-- Branding -->
-  <div class="footer-brand">
-    <h1 class="footer-logo display">{footer.studioName ?? 'bebr.studio'}</h1>
-  </div>
-
-  <!-- Bottom bar -->
-  <div class="footer-bottom">
-    <span class="heading-xs">{footer.copyrightText}</span>
-    <a href="#top" class="footer-back-to-top heading-xs">{footer.backToTopText}</a>
-  </div>
-
 </footer>
 
 <style>
-  .footer {
+  .footer-outer {
     background: var(--color-black);
+    width: 100%;
+  }
+
+  .footer {
+    /* background: verwijder deze van hier */
     padding-left: var(--container-padding);
     padding-right: var(--container-padding);
     padding-top: var(--space-16);
     padding-bottom: var(--space-8);
+    max-width: var(--container-max-width);
+    margin: 0 auto; /* centreert de content */
   }
 
   /* CTA */
@@ -142,6 +151,8 @@ const footer = await client.fetch(`*[_type == "footerSection"][0]{
 
   .footer-logo {
     display: block;
+    font-size: min(17vw, 15rem);
+    white-space: nowrap;
   }
 
   /* Bottom bar */

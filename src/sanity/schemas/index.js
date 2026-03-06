@@ -40,4 +40,3 @@ export const schemaTypes = [
 ]
 
   // bv ervicesSection,
-]

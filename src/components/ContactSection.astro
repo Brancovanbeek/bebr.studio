@@ -138,6 +138,10 @@ const status = url.searchParams.get('success')
 
   .contact-header h2 {
     color: var(--color-primary);
+    &::before,
+    &::after {
+      content: none;
+    }
   }
 
   .contact-header p {

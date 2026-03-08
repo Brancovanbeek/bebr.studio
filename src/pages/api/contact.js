@@ -8,7 +8,7 @@ const MAIL_CONFIG = {
   secure: false,
   auth: {
     user: "contact@bebr.studio",
-    pass: "Bebr130306!",
+    pass: import.meta.env.EMAIL_PASS,
   },
   tls: {
     rejectUnauthorized: false,
@@ -17,7 +17,7 @@ const MAIL_CONFIG = {
 
 function buildMailOptions(firstName, lastName, email, message) {
   return {
-    from: "contact@bebr.studio",
+    from: `"Website Contact" <contact@bebr.studio>`,
     to: "contact@bebr.studio",
     replyTo: email,
     subject: `Nieuw bericht van ${firstName} ${lastName}`,
@@ -25,7 +25,7 @@ function buildMailOptions(firstName, lastName, email, message) {
   }
 }
 
-export async function POST({ request }) {
+export async function POST({ request, redirect }) {
   const contentType = request.headers.get('content-type') || ''
   
   const isJSON = contentType.includes('application/json')
@@ -41,12 +41,12 @@ export async function POST({ request }) {
     )
     console.log("Message sent:", result.response)
 
-    if (!isJSON) return Response.redirect('/?success=true', 303)
+    if (!isJSON) return redirect('/?success=true', 303)
     return new Response(JSON.stringify({ success: true }), { status: 200 })
   } catch (err) {
     console.error("MAIL ERROR:", err)
 
-    if (!isJSON) return Response.redirect('/?success=false', 303)
+    if (!isJSON) return redirect('/?success=false', 303)
     return new Response(JSON.stringify({ success: false }), { status: 500 })
   }
 }

@@ -6,6 +6,7 @@ import ImageSection from "../components/ImageSection.astro";
 import TeamSection from "../components/TeamSection.astro";
 import ProjectsSection from "../components/ProjectsSection.astro";
 import Info from "../components/Info.astro"
+import ServicesSection from "../components/ServicesSection.astro"
 import FaqSection from "../components/FaqSection.astro"
 
 
@@ -74,7 +75,6 @@ const jsonLd = {
     "https://www.linkedin.com/bebrstudio"
   ]
 };
-
 ---
 
 <Layout
@@ -89,6 +89,7 @@ const jsonLd = {
   <ImageSection />
   <Info />
   <ProjectsSection />
+  <ServicesSection />
   <TeamSection />
   <FaqSection />
 </Layout>

@@ -1,0 +1,194 @@
+---
+// ServicesSection.astro
+import { client } from '../lib/sanity'
+import SanityImg from "@otterstack/sanity-img-astro"
+
+const { services } = await client.fetch(`
+  *[_type == "homePage"][0]{
+    "services": sections[_type == "servicesSection"][0].services
+  }
+`)
+---
+
+<section class="services-section_wrapper container">
+  <section class="services-section_header">
+    <h2 class="services-section_label heading-xs">(Diensten)</h2>
+  </section>
+
+  <div class="services-layout">
+
+    <!-- Left: all titles stacked -->
+    <div class="services-titles">
+      {services?.map((service: any, i: number) => (
+        <h3
+          class={`service-title heading-m${i === 0 ? ' is-active' : ''}`}
+          data-index={i}
+        >
+          {service.heading}
+        </h3>
+      ))}
+    </div>
+
+    <!-- Right: sticky panel -->
+    <div class="services-sticky">
+      {services?.map((service: any, i: number) => (
+        <div class={`service-panel${i === 0 ? ' is-active' : ''}`} data-index={i}>
+          <SanityImg
+            src={service.image}
+            sizes="(min-width: 768px) 40vw, 90vw"
+            alt={service.heading}
+            class="service-panel_image"
+          />
+          <p class="service-panel_text">{service.text}</p>
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>
+
+<script>
+  import gsap from 'gsap'
+  import { ScrollTrigger } from 'gsap/ScrollTrigger'
+
+  gsap.registerPlugin(ScrollTrigger)
+
+  const titles = document.querySelectorAll<HTMLElement>('.service-title')
+  const panels = document.querySelectorAll<HTMLElement>('.service-panel')
+
+  let currentIndex = -1
+
+  function setActive(index: number) {
+    if (index === currentIndex) return
+
+    // Immediately hide ALL panels to prevent double-visible state
+    panels.forEach((p, i) => {
+      if (i !== index) {
+        gsap.killTweensOf(p)
+        p.style.display = 'none'
+        p.classList.remove('is-active')
+      }
+    })
+
+    // Reset all title colors instantly except the new active
+    titles.forEach((t, i) => {
+      if (i !== index) {
+        gsap.killTweensOf(t)
+        gsap.set(t, { color: 'var(--color-gray-100)' })
+      }
+    })
+
+    // Animate new active title
+    gsap.to(titles[index], { color: 'var(--color-primary)', duration: 0.3, ease: 'power2.out' })
+
+    // Show and animate new panel
+    const nextPanel = panels[index]
+    nextPanel.style.display = 'flex'
+    nextPanel.classList.add('is-active')
+    gsap.fromTo(nextPanel,
+      { opacity: 0, y: 10 },
+      { opacity: 1, y: 0, duration: 0.35, ease: 'power2.out' }
+    )
+
+    currentIndex = index
+  }
+
+  if (window.matchMedia('(min-width: 768px)').matches) {
+    titles.forEach((title, i) => {
+      ScrollTrigger.create({
+        trigger: title,
+        start: 'top 40%',
+        end: 'top 40%',
+        onEnter: () => setActive(i),
+        onEnterBack: () => setActive(i),
+      })
+    })
+  }
+</script>
+
+<style>
+  .services-section_header {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: var(--space-6);
+  }
+
+  .services-section_label {
+    color: var(--color-primary);
+  }
+
+  .services-layout {
+    display: flex;
+    gap: var(--space-8);
+    align-items: flex-start;
+  }
+
+  /* ── Left column ── */
+  .services-titles {
+    flex: 1 1 55%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .service-title {
+    font-size: clamp(2.5rem, 7vw, 8rem);
+    line-height: 1.05;
+    font-weight: 700;
+    color: var(--color-gray-100);
+    cursor: default;
+    padding: var(--space-3) 0;
+  }
+
+  .service-title.is-active {
+    color: var(--color-primary);
+  }
+
+  /* ── Right column ── */
+  .services-sticky {
+    flex: 0 0 38%;
+    position: sticky;
+    top: 20vh;
+    align-self: flex-start;
+  }
+
+  .service-panel {
+    display: none;
+    flex-direction: column;
+    gap: var(--space-4);
+    opacity: 0;
+  }
+
+  .service-panel.is-active {
+    display: flex;
+    opacity: 1;
+  }
+
+  .service-panel_image {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+  }
+
+  .service-panel_text {
+    color: var(--color-text-muted);
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.5;
+  }
+
+  /* ── Mobile ── */
+  @media (max-width: 767px) {
+    .services-layout {
+      flex-direction: column;
+    }
+
+    .services-sticky {
+      display: none;
+    }
+
+    .service-title {
+      font-size: clamp(2rem, 10vw, 4rem);
+      color: var(--color-primary) !important;
+    }
+  }
+</style>

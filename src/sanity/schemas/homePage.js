@@ -32,6 +32,7 @@ export default {
         { type: 'imageSection'},
         { type: 'projectSection'},
         { type: 'processSection'},
+        { type: 'servicesSection'},
         { type: 'teamSection'},
         // Voeg hier meer secties toe:
         { type: 'faqSection'},

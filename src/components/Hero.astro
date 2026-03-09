@@ -14,20 +14,26 @@ const { hero } = await client.fetch(`
 ---
 
 <section class="hero-section">
-  <p class="tagline-text heading-m">{hero?.tagline}</p>
-  <a href="#image-section" class="scroll-text">{hero?.scrollText}</a>
-  <h1 class="logo display">{hero?.logoText}</h1>
+  <section class="hero-content container">
+    <p class="tagline-text heading-m">{hero?.tagline}</p>
+    <a href="#image-section" class="scroll-text">{hero?.scrollText}</a>
+    <h1 class="logo display">{hero?.logoText}</h1>
+  </section>
 </section>
 
 <style>
   .hero-section {
     height: 75vh;
     background-color: var(--color-black);
+  }
+
+  .hero-content {
     display: grid;
     grid-template-columns: repeat(6, 1fr);
     grid-template-rows: repeat(5, 1fr);
     width: 100%;
-    padding: 0 var(--space-6);
+    margin-top: 0;
+    height: 75vh;
   }
 
   h1{
@@ -72,6 +78,10 @@ const { hero } = await client.fetch(`
 
   @media (min-width: 1024px) {
     .hero-section{
+      height: 100vh;
+    }
+
+    .hero-content {
       height: 100vh;
     }
   }

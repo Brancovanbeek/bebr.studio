@@ -16,7 +16,7 @@ const url = new URL(Astro.request.url)
 const status = url.searchParams.get('success')
 ---
 
-<section class="contact-section container">
+<section id="contact-section" class="contact-section container">
   <div class="contact-header">
     <h2 class="heading-xl">{heading}</h2>
     <p class="heading-m">{tagline}</p>
@@ -150,12 +150,6 @@ const status = url.searchParams.get('success')
 </script>
 
 <style>
-  .contact-section {
-    padding: var(--space-8);
-    background: var(--color-background);
-    margin-block: var(--space-8);
-  }
-
   .contact-header {
     display: flex;
     justify-content: space-between;
@@ -269,7 +263,6 @@ const status = url.searchParams.get('success')
 
   button[type="submit"] {
     background: var(--color-primary);
-    color: var(--color-white);
     border-radius: 999px;
     padding: var(--space-4) var(--space-12);
     font-size: var(--font-size-body);

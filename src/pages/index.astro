@@ -5,6 +5,9 @@ import Layout from "../layouts/Layout.astro";
 import ImageSection from "../components/ImageSection.astro";
 import TeamSection from "../components/TeamSection.astro";
 import ProjectsSection from "../components/ProjectsSection.astro";
+import ContactSection from "../components/ContactSection.astro"
+import ServicesSection from "../components/ServicesSection.astro"
+import FaqSection from "../components/FaqSection.astro"
 
 const page = await client.fetch(`
   *[_type == "homePage"][0]{
@@ -70,13 +73,6 @@ const jsonLd = {
     "https://www.linkedin.com/bebrstudio"
   ]
 };
-import Hero from "../components/Hero.astro"
-import Layout from "../layouts/Layout.astro"  
-import ImageSection from "../components/ImageSection.astro"
-import TeamSection from "../components/TeamSection.astro"
-import ProjectsSection from "../components/ProjectsSection.astro"
-import ServicesSection from "../components/ServicesSection.astro"
-import FaqSection from "../components/FaqSection.astro"
 ---
 
 <Layout
@@ -92,5 +88,6 @@ import FaqSection from "../components/FaqSection.astro"
   <ProjectsSection />
   <ServicesSection />
   <TeamSection />
+  <ContactSection/>
   <FaqSection />
 </Layout>

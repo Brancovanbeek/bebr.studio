@@ -165,8 +165,9 @@ const currentYear = new Date().getFullYear();
   /* Bottom bar */
   .footer-bottom {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
     font-size: 0.8125rem;
     color: var(--color-gray-500);
     padding-top: 1rem;
@@ -203,6 +204,13 @@ const currentYear = new Date().getFullYear();
 
     .footer-links {
       gap: 6rem;
+    }
+
+    .footer-bottom {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0;
     }
   }
 </style>

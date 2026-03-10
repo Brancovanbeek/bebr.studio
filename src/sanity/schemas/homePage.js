@@ -34,6 +34,8 @@ export default {
         { type: 'processSection'},
         { type: 'servicesSection'},
         { type: 'teamSection'},
+        { type: 'contactSection'},
+
         // Voeg hier meer secties toe:
         { type: 'faqSection'},
   

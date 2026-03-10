@@ -190,6 +190,7 @@ body {
   margin-right: auto;
   padding-left: var(--container-padding);
   padding-right: var(--container-padding);
+  padding-top: var(--space-12);
 }
 
 @media (max-width: 768px) {

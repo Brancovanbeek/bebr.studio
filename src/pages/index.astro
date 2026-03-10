@@ -73,6 +73,15 @@ const jsonLd = {
     "https://www.linkedin.com/bebrstudio"
   ]
 };
+import Hero from "../components/Hero.astro"
+import Layout from "../layouts/Layout.astro"  
+import ImageSection from "../components/ImageSection.astro"
+import TeamSection from "../components/TeamSection.astro"
+import ProjectsSection from "../components/ProjectsSection.astro"
+import ProcessSection from '../components/ProcessSection.astro';
+import ServicesSection from "../components/ServicesSection.astro"
+import FaqSection from "../components/FaqSection.astro"
+import ProcessSection from '../components/ProcessSection.astro';
 ---
 
 <Layout
@@ -86,6 +95,7 @@ const jsonLd = {
   <Hero />
   <ImageSection />
   <ProjectsSection />
+  <ProcessSection />
   <ServicesSection />
   <TeamSection />
   <ContactSection/>

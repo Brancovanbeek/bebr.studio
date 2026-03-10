@@ -21,7 +21,7 @@ html {
   --font-primary: 'Neue Haas Grotesk Display Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 
   /* Font sizes - Fluid typography with clamp() */
-  --font-size-display: 17vw;      
+  --font-size-display: clamp(3rem, 17vw, 17rem);
   --font-size-heading-xl: clamp(2.5rem, 5vw + 0.5rem, 3.875rem);    /* 40px - 62px */
   --font-size-heading-l: clamp(1.875rem, 3vw + 0.5rem, 2.5rem);     /* 30px - 40px */
   --font-size-heading-m: clamp(1.5rem, 2.5vw + 0.25rem, 1.875rem);  /* 24px - 30px */
@@ -184,11 +184,19 @@ body {
    ============================================ */
 
 .container {
+  margin-top: var(--space-40);
   max-width: var(--container-max-width);
-  margin: 0 auto;
+  margin-left: auto;
+  margin-right: auto;
   padding-left: var(--container-padding);
   padding-right: var(--container-padding);
   padding-top: var(--space-12);
+}
+
+@media (max-width: 768px) {
+  .container {
+    margin-top: var(--space-24);
+  }
 }
 /* ============================================
    Image Handling

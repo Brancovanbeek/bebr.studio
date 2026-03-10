@@ -23,7 +23,7 @@ export const schemaTypes = [
   // Section types
   heroSection,
   imageSection,
-  infoSection
+  infoSection,
   projectSection,
   projectCard,
   servicesSection,

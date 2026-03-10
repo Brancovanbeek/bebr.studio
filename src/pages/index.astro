@@ -1,4 +1,4 @@
----
+--
 import { client } from '../lib/sanity';
 import Hero from "../components/Hero.astro";
 import Layout from "../layouts/Layout.astro";
@@ -8,6 +8,7 @@ import ProjectsSection from "../components/ProjectsSection.astro";
 import FaqSection from "../components/FaqSection.astro";
 import ContactSection from "../components/ContactSection.astro"
 import ServicesSection from "../components/ServicesSection.astro"
+import ProcessSection from '../components/ProcessSection.astro';
 
 const page = await client.fetch(`
   *[_type == "homePage"][0]{
@@ -73,17 +74,6 @@ const jsonLd = {
     "https://www.linkedin.com/bebrstudio"
   ]
 };
-
-import Hero from "../components/Hero.astro"
-import Layout from "../layouts/Layout.astro"  
-import ImageSection from "../components/ImageSection.astro"
-import TeamSection from "../components/TeamSection.astro"
-import ProjectsSection from "../components/ProjectsSection.astro"
-import ProcessSection from '../components/ProcessSection.astro';
-import ServicesSection from "../components/ServicesSection.astro"
-import FaqSection from "../components/FaqSection.astro"
-import ProcessSection from '../components/ProcessSection.astro';
----
 
 <Layout
   title={seo?.title ?? 'bebr.studio — Digital Web Studio'}

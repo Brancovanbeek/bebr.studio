@@ -333,5 +333,7 @@ Elke pagina heeft OG-tags voor correcte weergave bij delen op sociale media:
 ---
 
 ## Testen & validatie
+Op mobile en desktop komt deze score tevoorschijn. Seo is nog laag omdat er een HTTP header is die Vercel meestuurt: x-robots-tag: noindex.
+Dit gebeurt omdat de site nog op een preview/dev URL draait op Vercel. Vercel zet automatisch noindex op niet-productie deployments.
+<img width="639" height="636" alt="Scherm­afbeelding 2026-03-10 om 16 11 44" src="https://github.com/user-attachments/assets/c519ee74-6e6f-4c31-b932-261451851072" />
 
-_Wordt aangevuld na afronding — o.a. Lighthouse scores (performance, accessibility, SEO, best practices)._

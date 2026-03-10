@@ -30,6 +30,7 @@ export default {
       of: [
         { type: 'heroSection' },
         { type: 'imageSection'},
+        { type: 'infoSection'},
         { type: 'projectSection'},
         { type: 'processSection'},
         { type: 'servicesSection'},

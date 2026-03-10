@@ -5,7 +5,10 @@ import Layout from "../layouts/Layout.astro";
 import ImageSection from "../components/ImageSection.astro";
 import TeamSection from "../components/TeamSection.astro";
 import ProjectsSection from "../components/ProjectsSection.astro";
-import FaqSection from "../components/FaqSection.astro";
+import Info from "../components/Info.astro"
+import ServicesSection from "../components/ServicesSection.astro"
+import FaqSection from "../components/FaqSection.astro"
+import ProcessSection from '../components/ProcessSection.astro';
 import ContactSection from "../components/ContactSection.astro"
 import ServicesSection from "../components/ServicesSection.astro"
 import ProcessSection from '../components/ProcessSection.astro';
@@ -74,6 +77,7 @@ const jsonLd = {
     "https://www.linkedin.com/bebrstudio"
   ]
 };
+
 ---
 
 <Layout
@@ -86,6 +90,7 @@ const jsonLd = {
   <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
   <Hero />
   <ImageSection />
+  <Info />
   <ProjectsSection />
   <ProcessSection />
   <ServicesSection />

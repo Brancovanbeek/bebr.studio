@@ -7,17 +7,20 @@ Website van [bebr.studio](https://bebr.studio) — een digital web studio gespec
 ## Inhoudsopgave
 
 1. [Over het project](#over-het-project)
-2. [Tech stack & keuzes](#tech-stack--keuzes)
-3. [Architectuur](#architectuur)
-4. [Project structuur](#project-structuur)
-5. [Features](#features)
-6. [Aan de slag](#aan-de-slag)
-7. [Omgevingsvariabelen](#omgevingsvariabelen)
-8. [Commando's](#commandos)
-9. [Development workflow](#development-workflow)
-10. [Sanity CMS](#sanity-cms)
-11. [API endpoints](#api-endpoints)
-12. [SEO & Performance](#seo--performance)
+2. [Team](#team)
+3. [Tech stack & keuzes](#tech-stack--keuzes)
+4. [Architectuur](#architectuur)
+5. [Project structuur](#project-structuur)
+6. [Features](#features)
+7. [Toegankelijkheid](#toegankelijkheid)
+8. [Aan de slag](#aan-de-slag)
+9. [Omgevingsvariabelen](#omgevingsvariabelen)
+10. [Commando's](#commandos)
+11. [Development workflow](#development-workflow)
+12. [Sanity CMS](#sanity-cms)
+13. [API endpoints](#api-endpoints)
+14. [SEO & Performance](#seo--performance)
+15. [Testen & validatie](#testen--validatie)
 
 ---
 
@@ -26,6 +29,18 @@ Website van [bebr.studio](https://bebr.studio) — een digital web studio gespec
 Dit is de productiewebsite van bebr.studio, gebouwd als onderdeel van de Meesterproef (semester 4). Het project is een volledige portfolio- en marketingwebsite met een headless CMS-integratie, een werkend contactformulier met e-mailafhandeling en uitgebreide SEO-optimalisatie.
 
 De site is bedoeld voor potentiële klanten die op zoek zijn naar een studio voor branding, webdesign en development. De content is volledig beheerbaar via Sanity Studio zonder dat code aangepast hoeft te worden.
+
+---
+
+## Team
+
+| Naam | Rol |
+| :--- | :--- |
+| Branco van Beek | Frontend development & projectopzet |
+| Ties | Frontend development |
+| Matthijs | Frontend development |
+
+Het team werkte samen via een feature branch workflow op GitHub. Per feature werd een aparte branch aangemaakt, waarna een Pull Request geopend werd voor review vóór merge naar `dev`. Dit zorgde voor overzicht, voorkwam conflicten en hield de `dev` branch stabiel.
 
 ---
 
@@ -140,6 +155,17 @@ De site wordt gebouwd als statische HTML via `astro build`. Content wordt op bui
 - Statisch gegenereerde HTML — geen server-rendering bij elke request
 - Afbeeldingen via Sanity CDN met automatische formaatoptimalisatie (`auto=format`)
 - Minimale client-side JavaScript dankzij Astro's island architecture
+
+---
+
+## Toegankelijkheid
+
+Bij de ontwikkeling is rekening gehouden met een aantal basis toegankelijkheidsprincipes:
+
+- Alle formuliervelden hebben een gekoppeld `<label>` via `for`/`id`
+- Semantische HTML-elementen (`<header>`, `<main>`, `<footer>`, `<section>`, `<nav>`)
+- Het contactformulier werkt zonder JavaScript (progressive enhancement)
+- Afbeeldingen krijgen beschrijvende `alt`-attributen via het CMS
 
 ---
 
@@ -303,3 +329,9 @@ Elke pagina heeft OG-tags voor correcte weergave bij delen op sociale media:
 <meta property="og:image" content="..." />
 <meta property="og:url" content="..." />
 ```
+
+---
+
+## Testen & validatie
+
+_Wordt aangevuld na afronding — o.a. Lighthouse scores (performance, accessibility, SEO, best practices)._

@@ -25,6 +25,14 @@ export default defineConfig({
                   .schemaType('homePage')
                   .documentId('homepage')
               ),
+            S.listItem()
+              .title('Footer')
+              .icon(() => '🦶')
+              .child(
+                S.document()
+                  .schemaType('footerSection')
+                  .documentId('footerSection')
+              ),
           ]),
     }),
     visionTool(),

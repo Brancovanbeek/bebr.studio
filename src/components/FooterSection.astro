@@ -1,0 +1,216 @@
+---
+// FooterSection.astro
+import { client } from '../lib/sanity'
+
+const footer = await client.fetch(`*[_type == "footerSection"][0]{
+  ctaHeading,
+  ctaButtonText,
+  ctaButtonUrl,
+  sitemap {
+    label,
+    links[] { title, url }
+  },
+  social {
+    label,
+    links[] { platform, url }
+  },
+  studioName,
+  copyrightText,
+  backToTopText
+}`)
+
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="footer-outer">
+  <div class="footer">
+
+    <!-- CTA sectie -->
+    <div class="footer-cta">
+      <h2 class="footer-cta-heading heading-m">{footer.ctaHeading}</h2>
+      <a href={footer.ctaButtonUrl} class="footer-cta-button heading-m">
+        {footer.ctaButtonText}
+      </a>
+    </div>
+
+    <div class="footer-divider" />
+
+    <!-- Sitemap + Social -->
+    <div class="footer-links">
+      <nav class="footer-sitemap">
+        <p class="footer-links-heading heading-xs">{footer.sitemap?.label ?? 'Sitemap'}</p>
+        <ul>
+          {footer.sitemap?.links?.map((link: { title: string; url: string }) => (
+            <li><a class="heading-xs" href={link.url}>{link.title}</a></li>
+          ))}
+        </ul>
+      </nav>
+
+      <nav class="footer-social">
+        <p class="footer-links-heading heading-xs">{footer.social?.label ?? 'Social'}</p>
+        <ul>
+          {footer.social?.links?.map((link: { platform: string; url: string }) => (
+            <li>
+              <a class="heading-xs" href={link.url} target="_blank" rel="noopener noreferrer">
+                {link.platform}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+    </div>
+
+    <!-- Branding -->
+    <div class="footer-brand">
+      <span class="footer-logo display">{footer.studioName ?? 'bebr.studio'}</span>
+    </div>
+
+    <!-- Bottom bar -->
+    <div class="footer-bottom">
+      <a href="#top" class="footer-back-to-top heading-xs">{footer.backToTopText}</a>
+      <span class="heading-xs">{footer.copyrightText} {currentYear}</span>
+    </div>
+
+  </div>
+</footer>
+
+<style>
+  .footer-outer {
+    background: var(--color-black);
+    width: 100%;
+  }
+
+  .footer {
+    /* background: verwijder deze van hier */
+    padding-left: var(--container-padding);
+    padding-right: var(--container-padding);
+    padding-top: var(--space-16);
+    padding-bottom: var(--space-8);
+    max-width: var(--container-max-width);
+    margin: 0 auto; /* centreert de content */
+  }
+
+  /* CTA */
+  .footer-cta {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding-bottom: 3rem;
+  }
+
+  .footer-cta-heading {
+    margin: 0;
+  }
+
+  .footer-cta-button {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    width: fit-content;
+  }
+
+  .footer-divider {
+    border: none;
+    border-top: 1px solid var(--color-gray-900);
+    margin: 0 0 3rem;
+  }
+
+  /* Links */
+  .footer-links {
+    display: flex;
+    gap: 4rem;
+    margin-bottom: 4rem;
+  }
+
+  .footer-links-heading {
+    margin: 0 0 1rem;
+  }
+
+  .footer-sitemap ul,
+  .footer-social ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .footer-sitemap a,
+  .footer-social a {
+    color: var(--color-gray-500);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .footer-sitemap a:hover,
+  .footer-social a:hover {
+    color: var(--color-gray-100);
+  }
+
+  /* Branding */
+  .footer-brand {
+    padding-bottom: 0.5rem;
+  }
+
+  .footer-logo {
+    display: block;
+    font-size: min(17vw, 15rem);
+    white-space: nowrap;
+  }
+
+  .footer-logo::before,
+  .footer-logo::after {
+    content: none;
+  }
+
+  /* Bottom bar */
+  .footer-bottom {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.8125rem;
+    color: var(--color-gray-500);
+    padding-top: 1rem;
+
+    span {
+      color: var(--color-gray-500);
+    }
+  }
+
+  .footer-back-to-top {
+    color: var(--color-gray-500);
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  .footer-back-to-top:hover {
+    color: var(--color-gray-100);
+  }
+
+  @media (min-width: 768px) {
+    .footer-logo {
+      font-size: min(17vw, 15rem);
+    }
+
+    .footer-cta {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+
+    .footer-cta-button {
+      align-self: center;
+      white-space: nowrap;
+    }
+
+    .footer-links {
+      gap: 6rem;
+    }
+
+    .footer-bottom {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0;
+    }
+  }
+</style>

@@ -67,8 +67,8 @@ const currentYear = new Date().getFullYear();
 
     <!-- Bottom bar -->
     <div class="footer-bottom">
-      <span class="heading-xs">{footer.copyrightText} {currentYear}</span>
       <a href="#top" class="footer-back-to-top heading-xs">{footer.backToTopText}</a>
+      <span class="heading-xs">{footer.copyrightText} {currentYear}</span>
     </div>
 
   </div>
@@ -166,7 +166,7 @@ const currentYear = new Date().getFullYear();
   .footer-bottom {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     gap: 0.5rem;
     font-size: 0.8125rem;
     color: var(--color-gray-500);

@@ -6,7 +6,8 @@ import ImageSection from "../components/ImageSection.astro";
 import TeamSection from "../components/TeamSection.astro";
 import ProjectsSection from "../components/ProjectsSection.astro";
 import FaqSection from "../components/FaqSection.astro";
-
+import ContactSection from "../components/ContactSection.astro"
+import ServicesSection from "../components/ServicesSection.astro"
 
 const page = await client.fetch(`
   *[_type == "homePage"][0]{
@@ -78,8 +79,10 @@ import Layout from "../layouts/Layout.astro"
 import ImageSection from "../components/ImageSection.astro"
 import TeamSection from "../components/TeamSection.astro"
 import ProjectsSection from "../components/ProjectsSection.astro"
+import ProcessSection from '../components/ProcessSection.astro';
 import ServicesSection from "../components/ServicesSection.astro"
 import FaqSection from "../components/FaqSection.astro"
+import ProcessSection from '../components/ProcessSection.astro';
 ---
 
 <Layout
@@ -93,7 +96,9 @@ import FaqSection from "../components/FaqSection.astro"
   <Hero />
   <ImageSection />
   <ProjectsSection />
+  <ProcessSection />
   <ServicesSection />
   <TeamSection />
+  <ContactSection/>
   <FaqSection />
 </Layout>

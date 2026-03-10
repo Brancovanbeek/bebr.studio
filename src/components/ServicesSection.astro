@@ -12,7 +12,7 @@ const { services } = await client.fetch(`
 
 <section class="services-section_wrapper container">
   <section class="services-section_header">
-    <h2 class="services-section_label heading-xs">(Diensten)</h2>
+    <h2 class="services-section_label heading-xs">Diensten</h2>
   </section>
 
   <div class="services-layout">
@@ -39,7 +39,7 @@ const { services } = await client.fetch(`
             alt={service.heading}
             class="service-panel_image"
           />
-          <p class="service-panel_text">{service.text}</p>
+          <p class="service-panel_text heading-xs">{service.text}</p>
         </div>
       ))}
     </div>
@@ -110,7 +110,7 @@ const { services } = await client.fetch(`
   .services-section_header {
     display: flex;
     flex-direction: column;
-    margin-bottom: var(--space-6);
+    margin-bottom: var(--space-12);
   }
 
   .services-section_label {
@@ -171,9 +171,6 @@ const { services } = await client.fetch(`
 
   .service-panel_text {
     color: var(--color-text-muted);
-    font-size: 1rem;
-    font-weight: 600;
-    line-height: 1.5;
   }
 
   /* ── Mobile ── */

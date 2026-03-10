@@ -1,5 +1,5 @@
 <header class="header">
-  <div class="container nav-wrapper">
+  <div class="nav-wrapper container">
     <a href="/" class="logo heading-m">bebr.studio</a>
     <nav class="nav-main">
       <ul class="nav-links body">
@@ -19,18 +19,18 @@
           <li><a class="heading-l" href="/blog">Blog</a></li>
         </ul>
         <div class="contact-wrap">
-          <a href="/" class="cta-mobile heading-m">Start een project</a>
+          <a href="#contact-section" class="cta-mobile heading-m">Start een project</a>
         </div>
       </nav>
     </details>
     
-    <a href="/" class="cta heading-xs">Start een project</a>
+    <a href="#contact-section" class="cta heading-xs">Start een project</a>
   </div>
 </header>
 
 <script>
   const currentPath = window.location.pathname;
-  const mobileLinks = document.querySelectorAll<HTMLAnchorElement>('.link-list a');
+  const mobileLinks = document.querySelectorAll<HTMLAnchorElement>('.link-list a, .cta-mobile');
   const details = document.querySelector<HTMLDetailsElement>('details');
   const summary = document.querySelector<HTMLElement>('.menu-summary');
   const header = document.querySelector<HTMLElement>('.header');
@@ -88,7 +88,6 @@
 
 <style>
   .header {
-    padding: var(--space-6) 0;
     color: var(--color-gray-100);
     position: fixed;
     top: 0;
@@ -96,6 +95,11 @@
     right: 0;
     z-index: 10;
     transition: top 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .nav-wrapper{
+    margin-top: var(--space-6);
+    padding-top: 0;
   }
   .nav-main {
     display: none;
@@ -114,7 +118,6 @@
   .menu-summary {
     cursor: pointer;
     font-size: 1.1rem;
-    color: white;
     z-index: 11;
     mix-blend-mode: difference;
     list-style: none;
@@ -221,7 +224,7 @@
     left: 0;
     width: 100%;
     height: 0.1em;
-    background-color: white;
+    background-color: var(color-background);
   }
 
   .cta:hover::after,
@@ -266,7 +269,6 @@
     text-decoration: none;
     z-index: 10;
     mix-blend-mode: difference;
-    color: var(--color-white);
   }
   
 </style>

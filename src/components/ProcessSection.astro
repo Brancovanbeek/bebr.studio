@@ -27,13 +27,19 @@ const { processes } = await client.fetch(`
         display: flex;
         flex-direction: column;
         margin-bottom: var(--space-6);
+        @media (min-width: 754px) {
+            flex-direction: row;
+            align-items: center;
+        }
     }
     .process-section_label{
         color: var(--color-primary);
         font-weight: var(--font-weight-medium);
     }
     .process-section_description {
-        margin-left: auto;
         color: var(--color-primary);
+        @media (min-width: 754px) {
+          margin-left: auto;
+        }
     }
 </style>

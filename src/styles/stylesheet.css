@@ -188,6 +188,7 @@ body {
   margin: 0 auto;
   padding-left: var(--container-padding);
   padding-right: var(--container-padding);
+  padding-top: var(--space-12);
 }
 /* ============================================
    Image Handling

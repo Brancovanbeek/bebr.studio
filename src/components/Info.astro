@@ -94,6 +94,11 @@ const { info } = await client.fetch(`
   font-weight: var(--font-weight-medium);
 }
 
+h2::before,
+h2::after {
+  content: none;
+}
+
 .values-column {
   grid-column: 1 / -1;
   display: flex;

@@ -81,9 +81,10 @@ De site wordt gebouwd als statische HTML via `astro build`. Content wordt op bui
 │   ├── components/           # Herbruikbare Astro componenten
 │   │   ├── BaseHead.astro    # <head> met SEO meta-tags
 │   │   ├── Header.astro
-│   │   ├── Footer.svelte
+│   │   ├── FooterSection.astro
 │   │   ├── Hero.astro
 │   │   ├── ImageSection.astro
+│   │   ├── Info.astro
 │   │   ├── ProjectsSection.astro
 │   │   ├── ProjectCard.astro
 │   │   ├── ProcessSection.astro
@@ -104,12 +105,14 @@ De site wordt gebouwd als statische HTML via `astro build`. Content wordt op bui
 │   │       └── contact.js    # POST endpoint voor contactformulier
 │   ├── sanity/
 │   │   └── schemas/          # Sanity content type definities
+│   │       ├── _sectionTemplate.js
 │   │       ├── index.js
 │   │       ├── homePage.js
 │   │       ├── bedrijfsInfo.js
 │   │       ├── seo.js
 │   │       ├── heroSection.js
 │   │       ├── imageSection.js
+│   │       ├── infoSection.js
 │   │       ├── projectSection.js
 │   │       ├── projectCard.js
 │   │       ├── processSection.js
@@ -119,7 +122,9 @@ De site wordt gebouwd als statische HTML via `astro build`. Content wordt op bui
 │   │       ├── teamSection.js
 │   │       ├── teamCard.js
 │   │       ├── contactSection.js
-│   │       └── faqSection.js
+│   │       ├── faqSection.js
+│   │       ├── footerSection.js
+│   │       └── workSection.js
 │   └── styles/
 │       ├── stylesheet.css    # Globale stijlen & custom properties
 │       └── typography.css    # Typografie-systeem
@@ -228,7 +233,7 @@ Dit project volgt een **feature branch workflow**:
 4. Na review en goedkeuring: merge naar `dev`
 5. `dev` → `main` bij productie-releases
 
-Branches die gebruikt zijn tijdens dit project: `feature/hero-section`, `feature/contact-section`, `feature/process-section`, `feature/seo`, `feature/services-section`, `feature/team-section`, e.a.
+Branches die gebruikt zijn tijdens dit project: `feature/hero-section`, `feature/contact-section`, `feature/process-section`, `feature/seo`, `feature/services-section`, `feature/team-section`, `feature/footer-section`, `feature/info-section`, e.a.
 
 ---
 
@@ -247,12 +252,15 @@ Het CMS is opgebouwd rond een `homePage` document type dat alle secties als gene
 | `seo` | Titel, beschrijving, OG-image, favicon, noIndex |
 | `heroSection` | Titel, subtitel, CTA |
 | `imageSection` | Full-width afbeelding |
+| `infoSection` | Informatie/over-ons sectie |
 | `projectSection` + `projectCard` | Portfolio projecten |
+| `workSection` | Werkzaamheden/cases overzicht |
 | `processSection` + `processCard` | Werkproces stappen |
 | `servicesSection` + `serviceCard` | Aangeboden diensten |
 | `teamSection` + `teamCard` | Teamleden |
 | `contactSection` | Contactinformatie en formulier-teksten |
 | `faqSection` | Veelgestelde vragen |
+| `footerSection` | Footer-inhoud en links |
 
 ### Content ophalen
 

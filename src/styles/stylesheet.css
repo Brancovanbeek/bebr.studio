@@ -4,6 +4,7 @@ html {
      ================== */
   --color-black: #0d0d0d;
   --color-gray-900: #252525;
+  --color-gray-700: #757575;
   --color-gray-500: #969696;
   --color-gray-100: #e5e5e5;
   --color-white: #ffffff;
@@ -12,7 +13,7 @@ html {
   --color-primary: var(--color-black);
   --color-text: var(--color-gray-100);
   --color-background: var(--color-white);
-  --color-text-muted: var(--color-gray-500);
+  --color-text-muted: var(--color-gray-700);
   --color-border: var(--color-gray-100);
 
   /* ==================

@@ -1,23 +1,36 @@
-<!doctype html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="generator" content={Astro.generator} />
-		<title>bebr.studio</title>
-	</head>
-	<body>
-		<slot />
-	</body>
+---
+import '../styles/typography.css';
+import '../styles/stylesheet.css';
+import Header from '../components/Header.astro';
+import BaseHead from '../components/BaseHead.astro';
+import FooterSection from '../components/FooterSection.astro';
+
+
+const { title, description, noIndex, ogImage, favicon } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="nl">
+  <head>
+    <BaseHead title={title} description={description} noIndex={noIndex} ogImage={ogImage} favicon={favicon} />
+  </head>
+  <body>
+    <Header />
+    <main>
+      <slot />
+    </main>
+    <FooterSection/>
+  </body>
 </html>
 
 <style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+main {
+  flex: 1;
+}
 </style>
+

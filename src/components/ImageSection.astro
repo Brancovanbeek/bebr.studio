@@ -1,0 +1,54 @@
+---
+import { client } from '../lib/sanity'
+import SanityImg from "@otterstack/sanity-img-astro";
+
+const { image } = await client.fetch(`
+  *[_type == "homePage"][0]{
+    "image": sections[_type == "imageSection"][0].image
+  }
+`)
+---
+
+<section id="image-section" class="image-section">
+  {image && (
+    <SanityImg 
+        src={image}
+        sizes="100vw"
+        alt="Foto van het team achter bebr.studio"
+        loading="eager"
+        fetchpriority="high" 
+        class="image-section-image"
+    />
+  )}
+</section>
+
+<style>
+  .image-section {
+    position: relative;
+    width: 100%;
+    height: 50vh;
+    min-height: 250px;
+    max-height: 1200px;
+  }
+
+  .image-section-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+  }
+
+  @media (min-width: 480px) {
+    .image-section {
+      height: 60vh;
+      min-height: 300px;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .image-section {
+      height: 100vh;
+      min-height: 400px;
+    }
+  }
+</style>

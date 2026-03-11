@@ -9,16 +9,27 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/react": "^4.4.2",
+    "@astrojs/sitemap": "^3.7.0",
     "@astrojs/svelte": "^7.2.5",
+    "@astrojs/vercel": "^9.0.4",
+    "@otterstack/sanity-img-astro": "^0.2.6",
     "@sanity/astro": "^3.2.11",
     "@sanity/client": "^7.14.1",
+    "@sanity/image-url": "^2.0.3",
+    "@sanity/vision": "^5.9.0",
     "astro": "^5.17.1",
+    "nodemailer": "^8.0.1",
+    "gsap": "^3.14.2",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
     "react-is": "^19.2.4",
     "sanity": "^5.8.1",
     "styled-components": "^6.3.9",
-    "svelte": "^5.50.1",
+    "svelte": "^5.50.3",
     "typescript": "^5.9.3"
+  },
+  "devDependencies": {
+    "@types/nodemailer": "^7.0.11"
   }
 }

@@ -1,11 +1,100 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+import { client } from '../lib/sanity';
+import Hero from "../components/Hero.astro";
+import Layout from "../layouts/Layout.astro";
+import ImageSection from "../components/ImageSection.astro";
+import TeamSection from "../components/TeamSection.astro";
+import ProjectsSection from "../components/ProjectsSection.astro";
+import Info from "../components/Info.astro"
+import ServicesSection from "../components/ServicesSection.astro"
+import FaqSection from "../components/FaqSection.astro"
+import ProcessSection from '../components/ProcessSection.astro';
+import ContactSection from "../components/ContactSection.astro"
+import ServicesSection from "../components/ServicesSection.astro"
+import ProcessSection from '../components/ProcessSection.astro';
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const page = await client.fetch(`
+  *[_type == "homePage"][0]{
+    seo {
+      title,
+      description,
+      noIndex,
+      "faviconUrl": favicon.asset->url,
+      ogImage { asset->{ url } }
+    },
+    bedrijfsInfo {
+      naam,
+      url,
+      beschrijving,
+      diensten,
+      stad,
+      email,
+      telefoon,
+      prijsIndicatie,
+      "logoUrl": logo.asset->url
+    }
+  }
+`);
+
+const seo = page?.seo;
+const bedrijf = page?.bedrijfsInfo; 
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": bedrijf?.naam ?? "bebr.studio",
+  "url": bedrijf?.url ?? "https://bebr.studio",
+  "image": bedrijf?.logoUrl,
+  "logo": bedrijf?.logoUrl,
+  "description": bedrijf?.beschrijving ?? seo?.description,
+  "email": bedrijf?.email,
+  "telephone": bedrijf?.telefoon,
+  "priceRange": bedrijf?.prijsIndicatie ?? "€€",
+  "foundingLocation": "Amsterdam",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": bedrijf?.stad ?? "Amsterdam",
+    "addressCountry": "NL"
+  },
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Diensten",
+    "itemListElement": (bedrijf?.diensten ?? ["Webdesign", "Branding", "Development"]).map((naam: string) => ({
+      "@type": "Offer",
+      "itemOffered": {
+        "@type": "Service",
+        "name": naam
+      }
+    }))
+  },
+  "areaServed": {
+    "@type": "Country",
+    "name": "NL"
+  },
+  "knowsLanguage": ["nl", "en"],
+  "sameAs": [
+    "https://www.instagram.com/bebr.studio",
+    "https://www.linkedin.com/bebrstudio"
+  ]
+};
+
 ---
 
-<Layout>
-	<Welcome />
+<Layout
+  title={seo?.title ?? 'bebr.studio — Digital Web Studio'}
+  description={seo?.description ?? 'bebr.studio is een digital web studio gespecialiseerd in branding, design en webdevelopment.'}
+  noIndex={seo?.noIndex}
+  ogImage={seo?.ogImage?.asset?.url}
+  favicon={seo?.faviconUrl}
+>
+  <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  <Hero />
+  <ImageSection />
+  <Info />
+  <ProjectsSection />
+  <ProcessSection />
+  <ServicesSection />
+  <TeamSection />
+  <ContactSection/>
+  <FaqSection />
 </Layout>

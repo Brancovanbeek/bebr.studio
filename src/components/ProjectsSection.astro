@@ -1,0 +1,71 @@
+---
+import { client } from '../lib/sanity'
+import ProjectCard from './ProjectCard.astro'
+
+const { projects } = await client.fetch(`
+  *[_type == "homePage"][0]{
+    "projects": sections[_type == "projectSection"][0].projects
+  }
+`)
+---
+
+<section id="projectssection" class="project-section_wrapper container">
+  <section class="project-section_header">
+    <h2 class="project-section_label heading-xs">Projecten</h2>
+    <p class="project-section_description heading-m">Een selectie van onze <br> nieuwste projecten</p>
+  </section>
+
+  <section class="project-section">
+    {projects?.map((project: any) => (
+      <ProjectCard project={project} />
+    ))}
+  </section>
+</section>
+
+<style>
+  .project-section_header {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: var(--space-6);
+  }
+
+  .project-section_label{
+    color: var(--color-primary);
+    font-weight: var(--font-weight-medium);
+  }
+
+  .project-section_description {
+    color: var(--color-primary);
+    display: none;
+    margin-left: auto;
+  }
+
+  .project-section {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--grid-gap);
+  }
+
+  @media (min-width: 768px) {
+    .project-section {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .project-section_label {
+    align-self: center;
+    }
+    .project-section_header {
+      flex-direction: row;
+      justify-content: space-between;
+      margin-bottom: var(--space-12);
+    }
+    .project-section_description {
+      display: block;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .project-section {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+</style>

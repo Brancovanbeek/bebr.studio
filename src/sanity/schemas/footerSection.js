@@ -1,7 +1,7 @@
 export default {
   name: 'footerSection',
   title: 'Footer',
-  type: 'document',
+  type: 'object',
   fields: [
     // --- CTA sectie bovenaan ---
     {

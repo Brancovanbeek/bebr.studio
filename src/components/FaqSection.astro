@@ -22,7 +22,7 @@ const faqSchema = {
 };
 ---
 
-<section class="faq-section container" itemscope itemtype="https://schema.org/FAQPage">
+<section id="faqsection" class="faq-section container" itemscope itemtype="https://schema.org/FAQPage">
     <h2 class="heading-xs">Veelgestelde vragen</h2>
     
     <div class="faq-list con">
@@ -79,6 +79,15 @@ const faqSchema = {
         user-select: none;
         color: var(--color-primary);
         padding: var(--space-6) var(--space-0);
+    }
+    .faq-section{
+        margin-bottom: var(--space-24);
+    }
+
+    @media (min-width: 768px) {
+        .faq-section {
+            margin-bottom: var(--space-40);
+        }
     }
 
     .faq-question::-webkit-details-marker {

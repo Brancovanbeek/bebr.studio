@@ -36,18 +36,8 @@ export default {
         { type: 'servicesSection'},
         { type: 'teamSection'},
         { type: 'contactSection'},
-
-        // Voeg hier meer secties toe:
+        { type: 'footerSection'},
         { type: 'faqSection'},
-  
-  
-
-        // { type: 'teamSection'},
-        
-        // Later kun je hier toevoegen:
-        // { type: 'aboutSection' },
-        // { type: 'servicesSection' },
-        // { type: 'contactSection' }
       ]
     }
   ],

@@ -10,6 +10,7 @@ import ServicesSection from "../components/ServicesSection.astro"
 import FaqSection from "../components/FaqSection.astro"
 import ProcessSection from '../components/ProcessSection.astro';
 import ContactSection from "../components/ContactSection.astro"
+import BlogSection from "../components/BlogSection.astro"
 
 
 const page = await client.fetch(`
@@ -94,6 +95,7 @@ const jsonLd = {
   <ProcessSection />
   <ServicesSection />
   <TeamSection />
-  <ContactSection/>
   <FaqSection />
+  <BlogSection />
+  <ContactSection/>
 </Layout>

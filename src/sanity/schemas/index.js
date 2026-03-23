@@ -15,6 +15,8 @@ import teamCard from './teamCard'
 import faqSection from './faqSection'
 import contactSection from './contactSection'
 import footerSection from './footerSection'
+import blogSection from './blogSection'
+import blogCard from './blogCard'
 
 export const schemaTypes = [
   // Document types
@@ -36,4 +38,6 @@ export const schemaTypes = [
   faqSection,
   contactSection,
   footerSection,
+  blogSection,
+  blogCard,
 ]

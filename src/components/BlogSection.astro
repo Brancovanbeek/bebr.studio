@@ -1,0 +1,61 @@
+---
+import { client } from '../lib/sanity'
+import BlogCard from './BlogCard.astro'
+
+const { blogs } = await client.fetch(`
+  *[_type == "homePage"][0]{
+    "blogs": sections[_type == "blogSection"][0].blogs
+  }
+`)
+---
+
+<section id="blogssection" class="blog-section_wrapper container">
+  <section class="blog-section_header">
+    <h2 class="blog-section_label heading-xs">Laatste updates</h2>
+  </section>
+
+  <section class="blog-section">
+    {blogs?.map((blog: any) => (
+      <BlogCard blog={blog} />
+    ))}
+  </section>
+</section>
+
+<style>
+  .blog-section_header {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: var(--space-6);
+  }
+
+  .blog-section_label{
+    color: var(--color-primary);
+    font-weight: var(--font-weight-medium);
+  }
+
+  .blog-section {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--grid-gap);
+  }
+
+  @media (min-width: 768px) {
+    .blog-section {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .blog-section_label {
+    align-self: center;
+    }
+    .blog-section_header {
+      flex-direction: row;
+      justify-content: space-between;
+      margin-bottom: var(--space-12);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .blog-section {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+</style>

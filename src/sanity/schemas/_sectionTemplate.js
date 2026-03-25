@@ -4,23 +4,23 @@
 // STAP 2: Pas onderstaande aan:
 
 export default {
-  name: '',              // â† Verander naar bijv. 'aboutSection'
-  title: '',            // â† Verander naar bijv. 'About Sectie'
+  name: '',              // Verander naar bijv. 'aboutSection'
+  title: '',            // Verander naar bijv. 'About Sectie'
   type: 'object',
   fields: [
     {
-      name: 'heading',
+      name: 'heading', 
       title: 'Titel',
       type: 'string',
-      validation: Rule => Rule.required()
+      validation: Rule => Rule.required() // Zorgt ervoor dat dit veld verplicht is
     },
     {
       name: 'text',
       title: 'Tekst',
       type: 'text',
-      rows: 4
+      rows: 4  // Maakt een groter tekstveld met 4 rijen
     },
-    // Voeg hier meer velden toe:
+    // Voeg hier meer velden toe :
     // {
     //   name: 'image',
     //   title: 'Afbeelding',
@@ -28,10 +28,10 @@ export default {
     //   options: { hotspot: true }
     // },
   ],
-  preview: {
-    prepare() {
+  preview: { 
+    prepare() { 
       return {
-        title: ''  // â† Verander naar bijv. 'About Sectie' (zelfde als hierboven)
+        title: ''  // Verander naar bijv. 'About Sectie' (zelfde als hierboven)
       }
     }
   }

@@ -8,7 +8,7 @@ export default {
       title: 'Meta titel',
       type: 'string',
       description: 'Titel in Google en browsertabs. Ideaal 50–60 tekens.',
-      validation: Rule => Rule.required().max(60).warning('Houd de titel onder de 60 tekens.')
+      validation: Rule => Rule.required().max(60).warning('Houd de titel onder de 60 tekens.') //
     },
     {
       name: 'description',

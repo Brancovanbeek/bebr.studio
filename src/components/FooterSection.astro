@@ -1,5 +1,4 @@
 ---
-// FooterSection.astro
 import { client } from '../lib/sanity'
 
 const footer = await client.fetch(`*[_type == "footerSection"][0]{
@@ -85,16 +84,14 @@ const currentYear = new Date().getFullYear();
   }
 
   .footer {
-    /* background: verwijder deze van hier */
     padding-left: var(--container-padding);
     padding-right: var(--container-padding);
     padding-top: var(--space-16);
     padding-bottom: var(--space-8);
     max-width: var(--container-max-width);
-    margin: 0 auto; /* centreert de content */
+    margin: 0 auto;
   }
 
-  /* CTA */
   .footer-cta {
     display: flex;
     flex-direction: column;
@@ -118,7 +115,6 @@ const currentYear = new Date().getFullYear();
     margin: 0 0 3rem;
   }
 
-  /* Links */
   .footer-links {
     display: flex;
     gap: 4rem;
@@ -150,7 +146,6 @@ const currentYear = new Date().getFullYear();
     color: var(--color-gray-100);
   }
 
-  /* Branding */
   .footer-brand {
     padding-bottom: 0.5rem;
   }
@@ -166,7 +161,6 @@ const currentYear = new Date().getFullYear();
     content: none;
   }
 
-  /* Bottom bar */
   .footer-bottom {
     display: flex;
     flex-direction: column;

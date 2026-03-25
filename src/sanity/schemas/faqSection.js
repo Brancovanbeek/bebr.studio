@@ -1,5 +1,3 @@
-// faqSection.js
-
 export default {
   name: 'faqSection',
   title: 'FAQ Sectie',

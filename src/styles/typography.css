@@ -7,6 +7,7 @@
   font-display: swap;
 }
 
+/* Italic (400) */
 @font-face {
   font-family: 'Neue Haas Grotesk Display Pro';
   src: url('/fonts/NeueHaasDisplayRomanItalic.ttf') format('truetype');
@@ -24,6 +25,7 @@
   font-display: swap;
 }
 
+/* Medium Italic (500) */
 @font-face {
   font-family: 'Neue Haas Grotesk Display Pro';
   src: url('/fonts/NeueHaasDisplayMediumItalic.ttf') format('truetype');
@@ -41,6 +43,7 @@
   font-display: swap;
 }
 
+/* Bold Italic (700) */
 @font-face {
   font-family: 'Neue Haas Grotesk Display Pro';
   src: url('/fonts/NeueHaasDisplayBoldItalic.ttf') format('truetype');
@@ -49,7 +52,7 @@
   font-display: swap;
 }
 
-/* Light (300) - Optional */
+/* Light (300) */
 @font-face {
   font-family: 'Neue Haas Grotesk Display Pro';
   src: url('/fonts/NeueHaasDisplayLight.ttf') format('truetype');
@@ -58,7 +61,7 @@
   font-display: swap;
 }
 
-/* Black (900) - Optional */
+/* Black (900) */
 @font-face {
   font-family: 'Neue Haas Grotesk Display Pro';
   src: url('/fonts/NeueHaasDisplayBlack.ttf') format('truetype');

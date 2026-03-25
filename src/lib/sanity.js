@@ -1,4 +1,3 @@
-// src/lib/sanity.js
 import { createClient } from '@sanity/client'
 
 export const client = createClient({

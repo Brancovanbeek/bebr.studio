@@ -1,6 +1,6 @@
 # bebr.studio
 
-> bebr.studio is een digital web studio gevestigd in Amsterdan, Nederland. Wij helpen horecazaken groeien met een doordachte strategie, sterke branding en een website die converteert.
+> bebr.studio is een digital web studio gevestigd in Nederland. Wij helpen horecazaken groeien met een sterke branding en een website die converteert.
 
 ## Over ons
 bebr.studio richt zich exclusief op de horeca. Veel horecazaken zijn slecht vindbaar online en hun website past niet bij de beleving op locatie. Wij lossen dat op door de sfeer van een horecazaak te vertalen naar een online ervaring die gasten aantrekt en aanzet tot reserveren.
@@ -19,7 +19,7 @@ Wij maken niet alleen een mooi design, maar bouwen een complete online funnel. V
 Horecazaken zoals restaurants, cafés, hotels en andere horecaondernemers in Nederland die willen groeien met een sterkere online aanwezigheid.
 
 ## Locatie
-Amsterdam, Noord-Holland, Nederland
+Nederland
 
 ## Contact
 - Website: https://bebr.studio

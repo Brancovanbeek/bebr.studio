@@ -1,5 +1,12 @@
 ---
-const { title, description, noIndex = false, ogImage = '/og-image.jpg', favicon = '/favicon.ico' } = Astro.props;
+const { 
+    title, 
+    description, 
+    noIndex = false, 
+    ogImage = '/og-image.jpg', 
+    favicon = '/favicon.ico' 
+} = Astro.props;
+
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 ---
 
@@ -10,7 +17,8 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 <link rel="canonical" href={canonicalURL} />
 <link rel="icon" href={favicon} />
 <link rel="apple-touch-icon" href={favicon} />
-{noIndex && <meta name="robots" content="noindex, nofollow" />}
+{noIndex && <meta name="robots" content="noindex, nofollow" />}{
+/* Als `noIndex` true is, voeg je een robots meta tag toe. Dit voorkomt dat zoekmachines de pagina indexeren en volgen. */}
 
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />

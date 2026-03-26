@@ -35,6 +35,7 @@ export default {
         { type: 'processSection'},
         { type: 'servicesSection'},
         { type: 'teamSection'},
+        { type: 'blogSection' },
         { type: 'contactSection'},
         { type: 'footerSection'},
         { type: 'faqSection'},
